@@ -124,9 +124,14 @@ export function SetupBanner() {
   if (itemsNeedAction.length === 0) {
     return (
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 tracking-tight">
-          Just do it!
-        </h1>
+        <div className="relative">
+          <h1 className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 tracking-tight transition-all duration-300 hover:scale-105 cursor-default drop-shadow-sm hover:drop-shadow-md">
+            Just do it!
+          </h1>
+          <div className="absolute inset-0 text-7xl font-bold tracking-tight animate-title-shimmer bg-clip-text text-transparent pointer-events-none mix-blend-overlay">
+            Just do it!
+          </div>
+        </div>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
           To vibe coder for vibe coders
         </p>
