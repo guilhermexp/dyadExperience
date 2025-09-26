@@ -36,8 +36,8 @@ export function McpToolsPicker() {
           <TooltipTrigger asChild>
             <PopoverTrigger asChild>
               <Button
-                variant="outline"
-                className="has-[>svg]:px-2"
+                variant="ghost"
+                className="p-2 hover:bg-accent/50 rounded-lg transition-colors"
                 size="sm"
                 data-testid="mcp-tools-button"
               >

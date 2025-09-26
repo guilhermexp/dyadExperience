@@ -164,24 +164,28 @@ export function ChatList({ show }: { show?: boolean }) {
       >
         <SidebarGroupLabel>Recent Chats</SidebarGroupLabel>
         <SidebarGroupContent>
-          <div className="flex flex-col space-y-4">
-            <Button
-              onClick={handleNewChat}
-              variant="outline"
-              className="flex items-center justify-start gap-2 mx-2 py-3"
-            >
-              <PlusCircle size={16} />
-              <span>New Chat</span>
-            </Button>
-            <Button
-              onClick={() => setIsSearchDialogOpen(!isSearchDialogOpen)}
-              variant="outline"
-              className="flex items-center justify-start gap-2 mx-2 py-3"
-              data-testid="search-chats-button"
-            >
-              <Search size={16} />
-              <span>Search chats</span>
-            </Button>
+          <div className="flex flex-col space-y-2">
+            <div className="flex gap-2 px-2">
+              <Button
+                onClick={handleNewChat}
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9 hover:bg-accent rounded-lg transition-colors"
+                title="New Chat"
+              >
+                <PlusCircle className="h-4 w-4" />
+              </Button>
+              <Button
+                onClick={() => setIsSearchDialogOpen(!isSearchDialogOpen)}
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9 hover:bg-accent rounded-lg transition-colors"
+                data-testid="search-chats-button"
+                title="Search chats"
+              >
+                <Search className="h-4 w-4" />
+              </Button>
+            </div>
 
             {loading ? (
               <div className="py-3 px-4 text-sm text-gray-500">

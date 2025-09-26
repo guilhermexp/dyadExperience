@@ -60,6 +60,7 @@ import { DragDropOverlay } from "./DragDropOverlay";
 import { FileAttachmentDropdown } from "./FileAttachmentDropdown";
 import { showError, showExtraFilesToast } from "@/lib/toast";
 import { ChatInputControls } from "../ChatInputControls";
+import { McpToolsPicker } from "../McpToolsPicker";
 import { ChatErrorBox } from "./ChatErrorBox";
 import { selectedComponentPreviewAtom } from "@/atoms/previewAtoms";
 import { SelectedComponentDisplay } from "./SelectedComponentDisplay";
@@ -304,6 +305,11 @@ export function ChatInput({ chatId }: { chatId?: number }) {
                 onFileSelect={handleFileSelect}
                 disabled={isStreaming}
               />
+
+              {/* Tools button */}
+              {settings?.selectedChatMode === "agent" && (
+                <McpToolsPicker />
+              )}
 
               {isStreaming ? (
                 <button

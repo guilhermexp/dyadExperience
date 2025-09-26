@@ -12,6 +12,7 @@ import { usePostHog } from "posthog-js/react";
 import { HomeSubmitOptions } from "@/pages/home";
 import { ChatInputControls } from "../ChatInputControls";
 import { LexicalChatInput } from "./LexicalChatInput";
+import { McpToolsPicker } from "../McpToolsPicker";
 export function HomeChatInput({
   onSubmit,
 }: {
@@ -88,10 +89,17 @@ export function HomeChatInput({
 
             {/* File attachment dropdown */}
             <FileAttachmentDropdown
-              className="mt-2 mr-2"
+              className="mt-2"
               onFileSelect={handleFileSelect}
               disabled={isStreaming}
             />
+
+            {/* Tools button */}
+            {settings?.selectedChatMode === "agent" && (
+              <div className="mt-2">
+                <McpToolsPicker />
+              </div>
+            )}
 
             {isStreaming ? (
               <button
