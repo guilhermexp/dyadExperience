@@ -63,7 +63,7 @@ export default function SettingsPage() {
           Go Back
         </Button>
         <div className="flex justify-between mb-4">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-foreground">
             Settings
           </h1>
         </div>
@@ -75,7 +75,7 @@ export default function SettingsPage() {
 
           <div
             id="provider-settings"
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm"
+            className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect"
           >
             <ProviderSettingsGrid />
           </div>
@@ -83,21 +83,21 @@ export default function SettingsPage() {
           <div className="space-y-6">
             <div
               id="telemetry"
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+              className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
             >
-              <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+              <h2 className="text-lg font-medium text-foreground mb-4">
                 Telemetry
               </h2>
               <div className="space-y-2">
                 <TelemetrySwitch />
-                <div className="text-sm text-gray-500 dark:text-gray-400">
+                <div className="text-sm text-muted-foreground">
                   This records anonymous usage data to improve the product.
                 </div>
               </div>
 
-              <div className="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+              <div className="mt-2 flex items-center text-sm text-muted-foreground">
                 <span className="mr-2 font-medium">Telemetry ID:</span>
-                <span className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-gray-800 dark:text-gray-200 font-mono">
+                <span className="bg-muted px-2 py-0.5 rounded text-foreground font-mono">
                   {settings ? settings.telemetryUserId : "n/a"}
                 </span>
               </div>
@@ -107,9 +107,9 @@ export default function SettingsPage() {
           {/* Integrations Section */}
           <div
             id="integrations"
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+            className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
           >
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+            <h2 className="text-lg font-medium text-foreground mb-4">
               Integrations
             </h2>
             <div className="space-y-4">
@@ -123,9 +123,9 @@ export default function SettingsPage() {
           {/* Tools (MCP) */}
           <div
             id="tools-mcp"
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+            className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
           >
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+            <h2 className="text-lg font-medium text-foreground mb-4">
               Tools (MCP)
             </h2>
             <ToolsMcpSettings />
@@ -134,9 +134,9 @@ export default function SettingsPage() {
           {/* Experiments Section */}
           <div
             id="experiments"
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+            className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
           >
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+            <h2 className="text-lg font-medium text-foreground mb-4">
               Experiments
             </h2>
             <div className="space-y-4">
@@ -153,7 +153,7 @@ export default function SettingsPage() {
                   />
                   <Label htmlFor="enable-native-git">Enable Native Git</Label>
                 </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">
+                <div className="text-sm text-muted-foreground">
                   Native Git offers faster performance but requires{" "}
                   <a
                     onClick={() => {
@@ -174,7 +174,7 @@ export default function SettingsPage() {
           {/* Danger Zone */}
           <div
             id="danger-zone"
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-red-200 dark:border-red-800"
+            className="bg-card dark:bg-card rounded-xl border border-red-200 dark:border-red-800 glass-effect p-6"
           >
             <h2 className="text-lg font-medium text-red-600 dark:text-red-400 mb-4">
               Danger Zone
@@ -183,10 +183,10 @@ export default function SettingsPage() {
             <div className="space-y-4">
               <div className="flex items-start justify-between flex-col sm:flex-row sm:items-center gap-4">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900 dark:text-white">
+                  <h3 className="text-sm font-medium text-foreground">
                     Reset Everything
                   </h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     This will delete all your apps, chats, and settings. This
                     action cannot be undone.
                   </p>
@@ -223,19 +223,19 @@ export function GeneralSettings({ appVersion }: { appVersion: string | null }) {
   return (
     <div
       id="general-settings"
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+      className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
     >
-      <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+      <h2 className="text-lg font-medium text-foreground mb-4">
         General Settings
       </h2>
 
       <div className="space-y-4 mb-4">
         <div className="flex items-center gap-4">
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label className="text-sm font-medium text-foreground">
             Theme
           </label>
 
-          <div className="relative bg-gray-100 dark:bg-gray-700 rounded-lg p-1 flex">
+          <div className="relative bg-muted rounded-lg p-1 flex">
             {(["system", "light", "dark"] as const).map((option) => (
               <button
                 key={option}
@@ -245,8 +245,8 @@ export function GeneralSettings({ appVersion }: { appVersion: string | null }) {
                 transition-all duration-200
                 ${
                   theme === option
-                    ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    ? "bg-accent dark:bg-accent text-accent-foreground shadow-sm border border-border/50"
+                    : "text-muted-foreground hover:text-foreground"
                 }
               `}
               >
@@ -259,7 +259,7 @@ export function GeneralSettings({ appVersion }: { appVersion: string | null }) {
 
       <div className="space-y-1 mt-4">
         <AutoUpdateSwitch />
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-muted-foreground">
           This will automatically update the app when new versions are
           available.
         </div>
@@ -273,9 +273,9 @@ export function GeneralSettings({ appVersion }: { appVersion: string | null }) {
         <RuntimeModeSelector />
       </div>
 
-      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+      <div className="flex items-center text-sm text-muted-foreground mt-4">
         <span className="mr-2 font-medium">App Version:</span>
-        <span className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-gray-800 dark:text-gray-200 font-mono">
+        <span className="bg-muted px-2 py-0.5 rounded text-foreground font-mono">
           {appVersion ? appVersion : "-"}
         </span>
       </div>
@@ -287,22 +287,22 @@ export function WorkflowSettings() {
   return (
     <div
       id="workflow-settings"
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+      className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
     >
-      <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+      <h2 className="text-lg font-medium text-foreground mb-4">
         Workflow Settings
       </h2>
 
       <div className="space-y-1">
         <AutoApproveSwitch showToast={false} />
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-muted-foreground">
           This will automatically approve code changes and run them.
         </div>
       </div>
 
       <div className="space-y-1 mt-4">
         <AutoFixProblemsSwitch />
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-muted-foreground">
           This will automatically fix TypeScript errors.
         </div>
       </div>
@@ -313,9 +313,9 @@ export function AISettings() {
   return (
     <div
       id="ai-settings"
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
+      className="bg-card dark:bg-card rounded-xl border border-border/50 glass-effect p-6"
     >
-      <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+      <h2 className="text-lg font-medium text-foreground mb-4">
         AI Settings
       </h2>
 

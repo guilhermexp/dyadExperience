@@ -124,7 +124,7 @@ export function ApiKeyConfiguration({
           <div className="space-y-2">
             <label
               htmlFor="apiKeyInput"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-foreground"
             >
               {isValidUserKey ? "Update" : "Set"} {providerDisplayName} API Key
             </label>
@@ -141,7 +141,7 @@ export function ApiKeyConfiguration({
               </Button>
             </div>
             {saveError && <p className="text-xs text-red-600">{saveError}</p>}
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-muted-foreground">
               Setting a key here will override the environment variable (if
               set).
             </p>
@@ -185,14 +185,14 @@ export function ApiKeyConfiguration({
                 <AlertTitle>Environment Variable Not Set</AlertTitle>
                 <AlertDescription>
                   The{" "}
-                  <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">
+                  <code className="font-mono bg-muted px-1 rounded text-xs">
                     {envVarName}
                   </code>{" "}
                   environment variable is not set.
                 </AlertDescription>
               </Alert>
             )}
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">
+            <p className="text-xs text-muted-foreground mt-3">
               This key is set outside the application. If present, it will be
               used only if no key is configured in the Settings section above.
               Requires app restart to detect changes.

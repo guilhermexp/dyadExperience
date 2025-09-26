@@ -24,20 +24,19 @@ interface ProblemItemProps {
 
 const ProblemItem = ({ problem }: ProblemItemProps) => {
   return (
-    <div className="flex items-start gap-3 p-3 border-b border-border hover:bg-[var(--background-darkest)] transition-colors">
+    <div className="flex items-start gap-3 p-4 border-b border-border/30 hover:bg-white/5 transition-all duration-200">
       <div className="flex-shrink-0 mt-0.5">
-        <XCircle size={16} className="text-red-500" />
+        <XCircle size={16} className="text-red-500 opacity-80" />
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
-          <FileText size={14} className="text-muted-foreground flex-shrink-0" />
+          <FileText size={14} className="text-muted-foreground flex-shrink-0 opacity-70" />
           <span className="text-sm font-medium truncate">{problem.file}</span>
-
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground bg-black/10 dark:bg-white/10 px-2 py-0.5 rounded-md">
             {problem.line}:{problem.column}
           </span>
         </div>
-        <p className="text-sm text-foreground leading-relaxed">
+        <p className="text-sm text-foreground/90 leading-relaxed">
           {problem.message}
         </p>
       </div>
@@ -122,13 +121,13 @@ const ProblemsSummary = ({ problemReport, appId }: ProblemsSummaryProps) => {
 
   if (problems.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-32 text-center">
-        <p className="mt-6 text-sm font-medium text-muted-foreground mb-3">
+      <div className="flex flex-col items-center justify-center h-40 text-center">
+        <div className="w-16 h-16 rounded-full bg-green-100/80 dark:bg-green-900/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+          <Check size={24} className="text-green-600 dark:text-green-400" />
+        </div>
+        <p className="text-sm font-medium text-muted-foreground mb-4">
           No problems found
         </p>
-        <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center mb-3">
-          <Check size={20} className="text-green-600 dark:text-green-400" />
-        </div>
 
         <RecheckButton appId={appId} />
       </div>
@@ -136,11 +135,11 @@ const ProblemsSummary = ({ problemReport, appId }: ProblemsSummaryProps) => {
   }
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 bg-[var(--background-darkest)] border-b border-border">
+    <div className="flex items-center justify-between px-4 py-3 bg-card/20 backdrop-blur-sm border-b border-border/30">
       <div className="flex items-center gap-4">
         {totalErrors > 0 && (
           <div className="flex items-center gap-2">
-            <XCircle size={16} className="text-red-500" />
+            <XCircle size={16} className="text-red-500 opacity-80" />
             <span className="text-sm font-medium">
               {totalErrors} {totalErrors === 1 ? "error" : "errors"}
             </span>
@@ -179,8 +178,8 @@ export function _Problems() {
   if (!selectedAppId) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-center p-8">
-        <div className="w-16 h-16 rounded-full bg-[var(--background-darkest)] flex items-center justify-center mb-4">
-          <AlertTriangle size={24} className="text-muted-foreground" />
+        <div className="w-16 h-16 rounded-full bg-card/30 backdrop-blur-sm flex items-center justify-center mb-4">
+          <AlertTriangle size={24} className="text-muted-foreground opacity-80" />
         </div>
         <h3 className="text-lg font-medium mb-2">No App Selected</h3>
         <p className="text-sm text-muted-foreground max-w-md">
@@ -193,8 +192,8 @@ export function _Problems() {
   if (!problemReport) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-center p-8">
-        <div className="w-16 h-16 rounded-full bg-[var(--background-darkest)] flex items-center justify-center mb-4">
-          <AlertTriangle size={24} className="text-muted-foreground" />
+        <div className="w-16 h-16 rounded-full bg-card/30 backdrop-blur-sm flex items-center justify-center mb-4">
+          <AlertTriangle size={24} className="text-muted-foreground opacity-80" />
         </div>
         <h3 className="text-lg font-medium mb-2">No Problems Report</h3>
         <p className="text-sm text-muted-foreground max-w-md mb-4">

@@ -198,7 +198,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
             <ArrowLeft className="h-4 w-4" />
             Go Back
           </Button>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mr-3 mb-6">
+          <h1 className="text-3xl font-bold text-foreground mr-3 mb-6">
             Configure Provider
           </h1>
           <Alert variant="destructive">
@@ -227,7 +227,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
             <ArrowLeft className="h-4 w-4" />
             Go Back
           </Button>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mr-3 mb-6">
+          <h1 className="text-3xl font-bold text-foreground mr-3 mb-6">
             Provider Not Found
           </h1>
           <Alert variant="destructive">
@@ -287,7 +287,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
           <div className="mt-6 flex items-center justify-between p-4 bg-(--background-lightest) rounded-lg border">
             <div>
               <h3 className="font-medium">Enable Dyad Pro</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Toggle to enable Dyad Pro
               </p>
             </div>

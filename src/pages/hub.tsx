@@ -41,10 +41,10 @@ const HubPage: React.FC = () => {
           Go Back
         </Button>
         <header className="mb-8 text-left">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          <h1 className="text-3xl font-bold text-foreground mb-2">
             Pick your default template
           </h1>
-          <p className="text-md text-gray-600 dark:text-gray-400">
+          <p className="text-md text-muted-foreground">
             Choose a starting point for your new project.
             {isLoading && " Loading additional templates..."}
           </p>
@@ -53,7 +53,7 @@ const HubPage: React.FC = () => {
         {/* Official Templates Section */}
         {officialTemplates.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
               Official templates
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -73,7 +73,7 @@ const HubPage: React.FC = () => {
         {/* Community Templates Section */}
         {communityTemplates.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
               Community templates
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -106,10 +106,10 @@ function BackendSection() {
   return (
     <div className="">
       <header className="mb-4 text-left">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        <h1 className="text-3xl font-bold text-foreground mb-2">
           Backend Services
         </h1>
-        <p className="text-md text-gray-600 dark:text-gray-400">
+        <p className="text-md text-muted-foreground">
           Connect to backend services for your projects.
         </p>
       </header>

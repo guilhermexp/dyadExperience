@@ -34,6 +34,8 @@ const DEFAULT_SETTINGS: UserSettings = {
   enableAutoUpdate: true,
   releaseChannel: "stable",
   selectedTemplateId: DEFAULT_TEMPLATE_ID,
+  // Self-hosting mode - enable Dyad Pro by default
+  enableDyadPro: true,
 };
 
 const SETTINGS_FILE = "user-settings.json";

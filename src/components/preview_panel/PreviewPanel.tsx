@@ -31,19 +31,21 @@ const ConsoleHeader = ({
 }: ConsoleHeaderProps) => (
   <div
     onClick={onToggle}
-    className="flex items-start gap-2 px-4 py-1.5 border-t border-border cursor-pointer hover:bg-[var(--background-darkest)] transition-colors"
+    className="flex items-start gap-3 px-4 py-3 border-t border-border/30 cursor-pointer hover:bg-white/5 transition-all duration-200 bg-card/20 backdrop-blur-sm"
   >
-    <Logs size={16} className="mt-0.5" />
+    <Logs size={16} className="mt-0.5 opacity-80" />
     <div className="flex flex-col">
       <span className="text-sm font-medium">System Messages</span>
       {!isOpen && latestMessage && (
-        <span className="text-xs text-gray-500 truncate max-w-[200px] md:max-w-[400px]">
+        <span className="text-xs text-muted-foreground truncate max-w-[200px] md:max-w-[400px] opacity-70">
           {latestMessage}
         </span>
       )}
     </div>
     <div className="flex-1" />
-    {isOpen ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
+    <div className="p-1 rounded-md bg-white/5 hover:bg-white/10 transition-colors">
+      {isOpen ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
+    </div>
   </div>
 );
 
@@ -126,14 +128,16 @@ export function PreviewPanel() {
           </Panel>
           {isConsoleOpen && (
             <>
-              <PanelResizeHandle className="h-1 bg-border hover:bg-gray-400 transition-colors cursor-row-resize" />
+              <PanelResizeHandle className="h-1 bg-border/50 hover:bg-border transition-colors cursor-row-resize" />
               <Panel id="console" minSize={10} defaultSize={30}>
                 <div className="flex flex-col h-full">
-                  <ConsoleHeader
-                    isOpen={true}
-                    onToggle={() => setIsConsoleOpen(false)}
-                    latestMessage={latestMessage}
-                  />
+                  <div className="border-b border-border/30">
+                    <ConsoleHeader
+                      isOpen={true}
+                      onToggle={() => setIsConsoleOpen(false)}
+                      latestMessage={latestMessage}
+                    />
+                  </div>
                   <Console />
                 </div>
               </Panel>

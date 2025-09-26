@@ -15,6 +15,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { IpcClient } from "@/ipc/ipc_client";
 import { useUserBudgetInfo } from "@/hooks/useUserBudgetInfo";
 import { UserBudgetInfo } from "@/ipc/ipc_types";
+import { ImportAppButton } from "@/components/ImportAppButton";
+import { Upload } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -92,6 +94,13 @@ export const TitleBar = () => {
         >
           {displayText}
         </Button>
+        <ImportAppButton
+          variant="ghost"
+          size="sm"
+          className="hidden @2xl:block ml-1 no-app-region-drag text-xs h-5 w-5 p-0.5 opacity-60 hover:opacity-100"
+        >
+          <Upload className="h-3 w-3" />
+        </ImportAppButton>
         {isDyadPro && <DyadProButton isDyadProEnabled={isDyadProEnabled} />}
 
         {/* Preview Header */}

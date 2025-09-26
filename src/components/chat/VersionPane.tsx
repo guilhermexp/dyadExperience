@@ -159,7 +159,7 @@ export function VersionPane({ isVisible, onClose }: VersionPaneProps) {
                                 className={cn(
                                   "inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-medium rounded-md",
                                   isExpired
-                                    ? "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400"
+                                    ? "bg-muted text-muted-foreground"
                                     : "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
                                 )}
                               >

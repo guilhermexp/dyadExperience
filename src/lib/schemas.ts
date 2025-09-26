@@ -255,7 +255,8 @@ export function isDyadProEnabled(settings: UserSettings): boolean {
 }
 
 export function hasDyadProKey(settings: UserSettings): boolean {
-  return !!settings.providerSettings?.auto?.apiKey?.value;
+  // Self-hosting mode - always return true to unlock Pro features
+  return true;
 }
 
 // Define interfaces for the props

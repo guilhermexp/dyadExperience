@@ -112,7 +112,7 @@ const TreeNode = ({ node, level }: TreeNodeProps) => {
         onClick={handleClick}
       >
         {node.isDirectory && (
-          <span className="mr-1 text-gray-500">
+          <span className="mr-1 text-muted-foreground">
             {expanded ? <FolderOpen size={16} /> : <Folder size={16} />}
           </span>
         )}

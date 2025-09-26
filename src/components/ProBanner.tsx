@@ -19,9 +19,8 @@ export function ProBanner() {
     return options[Math.floor(Math.random() * options.length)];
   });
 
-  if (settings?.enableDyadPro || userBudget) {
-    return null;
-  }
+  // Self-hosting mode - always hide Pro banner
+  return null;
 
   return (
     <div className="mt-6 max-w-2xl mx-auto">

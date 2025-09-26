@@ -389,13 +389,13 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
   if (loading) {
     return (
       <div className="flex flex-col h-full relative">
-        <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 bg-gray-50 dark:bg-gray-950">
+        <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 bg-muted">
           <div className="relative w-5 h-5 animate-spin">
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-primary rounded-full"></div>
             <div className="absolute bottom-0 left-0 w-2 h-2 bg-primary rounded-full opacity-80"></div>
             <div className="absolute bottom-0 right-0 w-2 h-2 bg-primary rounded-full opacity-60"></div>
           </div>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-muted-foreground">
             Preparing app preview...
           </p>
         </div>
@@ -406,7 +406,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
   // Display message if no app is selected
   if (selectedAppId === null) {
     return (
-      <div className="p-4 text-gray-500 dark:text-gray-400">
+      <div className="p-4 text-muted-foreground">
         Select an app to see the preview.
       </div>
     );
@@ -451,7 +451,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
             </Tooltip>
           </TooltipProvider>
           <button
-            className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-gray-300"
+            className="p-1 rounded hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground"
             disabled={!canGoBack || loading || !selectedAppId}
             onClick={handleNavigateBack}
             data-testid="preview-navigate-back-button"
@@ -459,7 +459,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
             <ArrowLeft size={16} />
           </button>
           <button
-            className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-gray-300"
+            className="p-1 rounded hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground"
             disabled={!canGoForward || loading || !selectedAppId}
             onClick={handleNavigateForward}
             data-testid="preview-navigate-forward-button"
@@ -468,7 +468,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
           </button>
           <button
             onClick={handleReload}
-            className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-gray-300"
+            className="p-1 rounded hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground"
             disabled={loading || !selectedAppId}
             data-testid="preview-refresh-button"
           >
@@ -480,7 +480,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
         <div className="relative flex-grow min-w-20">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <div className="flex items-center justify-between px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm text-gray-700 dark:text-gray-200 cursor-pointer w-full min-w-0">
+              <div className="flex items-center justify-between px-3 py-1 bg-muted rounded text-sm text-foreground cursor-pointer w-full min-w-0">
                 <span className="truncate flex-1 mr-2 min-w-0">
                   {navigationHistory[currentHistoryPosition]
                     ? new URL(navigationHistory[currentHistoryPosition])
@@ -499,7 +499,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
                     className="flex justify-between"
                   >
                     <span>{route.label}</span>
-                    <span className="text-gray-500 dark:text-gray-400 text-xs">
+                    <span className="text-muted-foreground text-xs">
                       {route.path}
                     </span>
                   </DropdownMenuItem>
@@ -528,7 +528,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
                 IpcClient.getInstance().openExternalUrl(originalUrl);
               }
             }}
-            className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-gray-300"
+            className="p-1 rounded hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground"
           >
             <ExternalLink size={16} />
           </button>
@@ -550,9 +550,9 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
         />
 
         {!appUrl ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 bg-gray-50 dark:bg-gray-950">
-            <Loader2 className="w-8 h-8 animate-spin text-gray-400 dark:text-gray-500" />
-            <p className="text-gray-600 dark:text-gray-300">
+          <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 bg-muted">
+            <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+            <p className="text-muted-foreground">
               Starting your app server...
             </p>
           </div>
@@ -566,7 +566,7 @@ export const PreviewIframe = ({ loading }: { loading: boolean }) => {
             ref={iframeRef}
             key={reloadKey}
             title={`Preview for App ${selectedAppId}`}
-            className="w-full h-full border-none bg-white dark:bg-gray-950"
+            className="w-full h-full border-none bg-background"
             src={appUrl}
             allow="clipboard-read; clipboard-write; fullscreen; microphone; camera; display-capture; geolocation; autoplay; picture-in-picture"
           />

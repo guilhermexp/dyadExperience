@@ -15,13 +15,7 @@ export function ChatErrorBox({
   if (error.includes("doesn't have a free quota tier")) {
     return (
       <ChatErrorContainer onDismiss={onDismiss}>
-        {error}
-        <span className="ml-1">
-          <ExternalLink href="https://dyad.sh/pro">
-            Access with Dyad Pro
-          </ExternalLink>
-        </span>{" "}
-        or switch to another model.
+        {error} Please switch to another model.
       </ChatErrorContainer>
     );
   }
@@ -34,13 +28,7 @@ export function ChatErrorBox({
   ) {
     return (
       <ChatErrorContainer onDismiss={onDismiss}>
-        {error}
-        <span className="ml-1">
-          <ExternalLink href="https://dyad.sh/pro">
-            Upgrade to Dyad Pro
-          </ExternalLink>
-        </span>{" "}
-        or read the
+        {error} Please read the
         <span className="ml-1">
           <ExternalLink href="https://dyad.sh/docs/help/ai-rate-limit">
             Rate limit troubleshooting guide.
@@ -54,11 +42,7 @@ export function ChatErrorBox({
     return (
       <ChatInfoContainer onDismiss={onDismiss}>
         <span>
-          Looks like you don't have a valid Dyad Pro key.{" "}
-          <ExternalLink href="https://dyad.sh/pro">
-            Upgrade to Dyad Pro
-          </ExternalLink>{" "}
-          today.
+          Please configure your API keys in the settings.
         </span>
       </ChatInfoContainer>
     );

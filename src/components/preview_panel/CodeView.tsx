@@ -26,7 +26,7 @@ export const CodeView = ({ loading, app }: CodeViewProps) => {
 
   if (!app) {
     return (
-      <div className="text-center py-4 text-gray-500">No app selected</div>
+      <div className="text-center py-4 text-muted-foreground">No app selected</div>
     );
   }
 
@@ -37,13 +37,13 @@ export const CodeView = ({ loading, app }: CodeViewProps) => {
         <div className="flex items-center p-2 border-b space-x-2">
           <button
             onClick={() => refreshApp()}
-            className="p-1 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="p-1 rounded hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={loading || !app.id}
             title="Refresh Files"
           >
             <RefreshCw size={16} />
           </button>
-          <div className="text-sm text-gray-500">{app.files.length} files</div>
+          <div className="text-sm text-muted-foreground">{app.files.length} files</div>
         </div>
 
         {/* Content */}
@@ -55,7 +55,7 @@ export const CodeView = ({ loading, app }: CodeViewProps) => {
             {selectedFile ? (
               <FileEditor appId={app.id ?? null} filePath={selectedFile.path} />
             ) : (
-              <div className="text-center py-4 text-gray-500">
+              <div className="text-center py-4 text-muted-foreground">
                 Select a file to view
               </div>
             )}
@@ -65,5 +65,5 @@ export const CodeView = ({ loading, app }: CodeViewProps) => {
     );
   }
 
-  return <div className="text-center py-4 text-gray-500">No files found</div>;
+  return <div className="text-center py-4 text-muted-foreground">No files found</div>;
 };

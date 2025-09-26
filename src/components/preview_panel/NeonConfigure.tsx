@@ -18,11 +18,11 @@ const getBranchTypeColor = (type: NeonBranch["type"]) => {
     case "development":
       return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
     case "snapshot":
-      return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
+      return "bg-muted text-muted-foreground";
     case "preview":
       return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
     default:
-      return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
+      return "bg-muted text-muted-foreground";
   }
 };
 

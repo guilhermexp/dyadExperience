@@ -245,10 +245,10 @@ export function ChatInput({ chatId }: { chatId?: number }) {
           Error loading proposal: {proposalError}
         </div>
       )}
-      <div className="p-4" data-testid="chat-input-container">
+      <div className="p-6" data-testid="chat-input-container">
         <div
-          className={`relative flex flex-col border border-border rounded-lg bg-(--background-lighter) shadow-sm ${
-            isDraggingOver ? "ring-2 ring-blue-500 border-blue-500" : ""
+          className={`relative flex flex-col space-y-3 border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm shadow-lg min-h-[80px] ${
+            isDraggingOver ? "ring-2 ring-primary border-primary" : ""
           }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
@@ -286,7 +286,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
           {/* Use the DragDropOverlay component */}
           <DragDropOverlay isDraggingOver={isDraggingOver} />
 
-          <div className="flex items-start space-x-2 ">
+          <div className="flex items-start space-x-3 p-2">
             <LexicalChatInput
               value={inputValue}
               onChange={setInputValue}
@@ -299,7 +299,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
             {isStreaming ? (
               <button
                 onClick={handleCancel}
-                className="px-2 py-2 mt-1 mr-1 hover:bg-(--background-darkest) text-(--sidebar-accent-fg) rounded-lg"
+                className="px-3 py-3 mt-2 mr-2 hover:bg-accent text-foreground rounded-xl transition-colors"
                 title="Cancel generation"
               >
                 <StopCircleIcon size={20} />
@@ -308,14 +308,14 @@ export function ChatInput({ chatId }: { chatId?: number }) {
               <button
                 onClick={handleSubmit}
                 disabled={!inputValue.trim() && attachments.length === 0}
-                className="px-2 py-2 mt-1 mr-1 hover:bg-(--background-darkest) text-(--sidebar-accent-fg) rounded-lg disabled:opacity-50"
+                className="px-3 py-3 mt-2 mr-2 hover:bg-accent text-foreground rounded-xl disabled:opacity-50 transition-colors"
                 title="Send message"
               >
                 <SendHorizontalIcon size={20} />
               </button>
             )}
           </div>
-          <div className="pl-2 pr-1 flex items-center justify-between pb-2">
+          <div className="px-3 pb-3 flex items-center justify-between">
             <div className="flex items-center">
               <ChatInputControls showContextFilesPicker={true} />
               {/* File attachment dropdown */}

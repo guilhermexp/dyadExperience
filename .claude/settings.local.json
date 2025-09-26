@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pkill:*)",
+      "Bash(kill-port:*)",
+      "Bash(rm:*)",
+      "Bash(npm start)",
+      "Bash(npm install)",
+      "Bash(npm run dev:engine:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -68,7 +68,7 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
             ))
           : !renderSetupBanner() && (
               <div className="flex flex-col items-center justify-center h-full max-w-2xl mx-auto">
-                <div className="flex flex-1 items-center justify-center text-gray-500">
+                <div className="flex flex-1 items-center justify-center text-muted-foreground">
                   No messages yet
                 </div>
               </div>
