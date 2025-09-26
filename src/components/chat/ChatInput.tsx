@@ -248,8 +248,8 @@ export function ChatInput({ chatId }: { chatId?: number }) {
       )}
       <div className="p-3 md:p-4 lg:p-6" data-testid="chat-input-container">
         <div
-          className={`relative flex flex-col space-y-2 border border-border/50 rounded-xl bg-card/30 backdrop-blur-sm shadow-sm min-h-[70px] ${
-            isDraggingOver ? "ring-2 ring-primary border-primary" : ""
+          className={`relative flex flex-col space-y-2 border border-white/15 rounded-xl bg-white/5 backdrop-blur-md shadow-lg min-h-[70px] transition-all hover:bg-white/[0.07] hover:border-white/20 ${
+            isDraggingOver ? "ring-2 ring-primary border-primary bg-white/10" : ""
           }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
