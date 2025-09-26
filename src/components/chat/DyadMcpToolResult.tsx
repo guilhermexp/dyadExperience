@@ -30,32 +30,32 @@ export const DyadMcpToolResult: React.FC<DyadMcpToolResultProps> = ({
 
   return (
     <div
-      className="relative bg-(--background-lightest) hover:bg-(--background-lighter) rounded-lg px-4 py-2 border my-2 cursor-pointer"
+      className="relative bg-white/5 backdrop-blur-md hover:bg-white/10 rounded-lg px-3 py-2 border border-white/10 my-2 cursor-pointer transition-all"
       onClick={() => setExpanded((v) => !v)}
     >
       {/* Top-left label badge */}
       <div
-        className="absolute top-3 left-2 flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold text-emerald-600 bg-white dark:bg-zinc-900"
+        className="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 backdrop-blur-sm border border-emerald-500/20"
         style={{ zIndex: 1 }}
       >
-        <CheckCircle size={16} className="text-emerald-600" />
+        <CheckCircle size={12} className="text-emerald-400" />
         <span>Tool Result</span>
       </div>
 
       {/* Right chevron */}
-      <div className="absolute top-2 right-2 p-1 text-gray-500">
-        {expanded ? <ChevronsDownUp size={18} /> : <ChevronsUpDown size={18} />}
+      <div className="absolute top-2 right-2 p-1 text-white/40">
+        {expanded ? <ChevronsDownUp size={14} /> : <ChevronsUpDown size={14} />}
       </div>
 
       {/* Header content */}
-      <div className="flex items-start gap-2 pl-24 pr-8 py-1">
+      <div className="flex items-start gap-2 pl-20 pr-8 py-0.5">
         {serverName ? (
-          <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-zinc-800 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-zinc-700">
+          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             {serverName}
           </span>
         ) : null}
         {toolName ? (
-          <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-200 border border-border">
+          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/5 text-white/60 border border-white/10">
             {toolName}
           </span>
         ) : null}

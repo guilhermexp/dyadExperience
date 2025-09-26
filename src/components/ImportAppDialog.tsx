@@ -166,9 +166,9 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
           </DialogDescription>
         </DialogHeader>
 
-        <Alert className="border-blue-500/20 text-blue-500">
-          <Info className="h-4 w-4" />
-          <AlertDescription>
+        <Alert className="border-blue-500/20 bg-blue-500/5 text-blue-400">
+          <Info className="h-3 w-3" />
+          <AlertDescription className="text-xs">
             App import is an experimental feature. If you encounter any issues,
             please report them using the Help button.
           </AlertDescription>
@@ -179,12 +179,12 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
             <Button
               onClick={handleSelectFolder}
               disabled={selectFolderMutation.isPending}
-              className="w-full"
+              className="w-full h-8 text-xs"
             >
               {selectFolderMutation.isPending ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-3 w-3 animate-spin" />
               ) : (
-                <Folder className="mr-2 h-4 w-4" />
+                <Folder className="mr-2 h-3 w-3" />
               )}
               {selectFolderMutation.isPending
                 ? "Selecting folder..."
@@ -192,11 +192,11 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
             </Button>
           ) : (
             <div className="space-y-4">
-              <div className="rounded-md border p-4">
+              <div className="rounded-md border border-white/15 bg-white/5 p-3">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-medium">Selected folder:</p>
-                    <p className="text-sm text-muted-foreground break-all">
+                    <p className="text-xs font-medium text-white/90">Selected folder:</p>
+                    <p className="text-xs text-white/50 break-all mt-1">
                       {selectedPath}
                     </p>
                   </div>
@@ -204,10 +204,10 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
                     variant="ghost"
                     size="sm"
                     onClick={handleClear}
-                    className="h-8 w-8 p-0 flex-shrink-0"
+                    className="h-6 w-6 p-0 flex-shrink-0 hover:bg-white/10"
                     disabled={importAppMutation.isPending}
                   >
-                    <X className="h-4 w-4" />
+                    <X className="h-3 w-3" />
                     <span className="sr-only">Clear selection</span>
                   </Button>
                 </div>
@@ -215,23 +215,23 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
 
               <div className="space-y-2">
                 {nameExists && (
-                  <p className="text-sm text-yellow-500">
+                  <p className="text-xs text-yellow-500">
                     An app with this name already exists. Please choose a
                     different name:
                   </p>
                 )}
                 <div className="relative">
-                  <Label className="text-sm ml-2 mb-2">App name</Label>
+                  <Label className="text-xs ml-2 mb-2 text-white/70">App name</Label>
                   <Input
                     value={customAppName}
                     onChange={handleAppNameChange}
                     placeholder="Enter new app name"
-                    className="w-full pr-8"
+                    className="w-full pr-8 h-7 text-xs"
                     disabled={importAppMutation.isPending}
                   />
                   {isCheckingName && (
                     <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                      <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                      <Loader2 className="h-3 w-3 animate-spin text-muted-foreground" />
                     </div>
                   )}
                 </div>
@@ -239,12 +239,12 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
 
               <Accordion type="single" collapsible>
                 <AccordionItem value="advanced-options">
-                  <AccordionTrigger className="text-sm hover:no-underline">
+                  <AccordionTrigger className="text-xs hover:no-underline text-white/70">
                     Advanced options
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4">
                     <div className="grid gap-2">
-                      <Label className="text-sm ml-2 mb-2">
+                      <Label className="text-xs ml-2 mb-2 text-white/70">
                         Install command
                       </Label>
                       <Input
@@ -252,19 +252,21 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
                         onChange={(e) => setInstallCommand(e.target.value)}
                         placeholder="pnpm install"
                         disabled={importAppMutation.isPending}
+                        className="h-7 text-xs"
                       />
                     </div>
                     <div className="grid gap-2">
-                      <Label className="text-sm ml-2 mb-2">Start command</Label>
+                      <Label className="text-xs ml-2 mb-2 text-white/70">Start command</Label>
                       <Input
                         value={startCommand}
                         onChange={(e) => setStartCommand(e.target.value)}
                         placeholder="pnpm dev"
                         disabled={importAppMutation.isPending}
+                        className="h-7 text-xs"
                       />
                     </div>
                     {!commandsValid && (
-                      <p className="text-sm text-red-500">
+                      <p className="text-xs text-red-400">
                         Both commands are required when customizing.
                       </p>
                     )}
@@ -273,21 +275,21 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
               </Accordion>
 
               {hasAiRules === false && (
-                <Alert className="border-yellow-500/20 text-yellow-500 flex items-start gap-2">
+                <Alert className="border-yellow-500/20 bg-yellow-500/5 text-yellow-400 flex items-start gap-2">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Info className="h-4 w-4 flex-shrink-0 mt-1" />
+                        <Info className="h-3 w-3 flex-shrink-0 mt-1" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>
+                        <p className="text-xs">
                           AI_RULES.md lets Dyad know which tech stack to use for
                           editing the app
                         </p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                  <AlertDescription>
+                  <AlertDescription className="text-xs">
                     No AI_RULES.md found. Dyad will automatically generate one
                     after importing.
                   </AlertDescription>
@@ -295,8 +297,8 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
               )}
 
               {importAppMutation.isPending && (
-                <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                <div className="flex items-center justify-center space-x-2 text-xs text-white/50 animate-pulse">
+                  <Loader2 className="h-3 w-3 animate-spin" />
                   <span>Importing app...</span>
                 </div>
               )}
@@ -309,6 +311,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
             variant="outline"
             onClick={onClose}
             disabled={importAppMutation.isPending}
+            className="h-7 text-xs"
           >
             Cancel
           </Button>
@@ -320,7 +323,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
               nameExists ||
               !commandsValid
             }
-            className="min-w-[80px]"
+            className="min-w-[80px] h-7 text-xs"
           >
             {importAppMutation.isPending ? <>Importing...</> : "Import"}
           </Button>

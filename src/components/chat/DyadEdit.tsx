@@ -38,37 +38,37 @@ export const DyadEdit: React.FC<DyadEditProps> = ({
 
   return (
     <div
-      className={`bg-(--background-lightest) hover:bg-(--background-lighter) rounded-lg px-4 py-2 border my-2 cursor-pointer ${
+      className={`bg-white/5 backdrop-blur-md hover:bg-white/10 rounded-lg px-3 py-2 border my-2 cursor-pointer transition-all ${
         inProgress
-          ? "border-amber-500"
+          ? "border-amber-500/50"
           : aborted
-            ? "border-red-500"
-            : "border-border"
+            ? "border-red-500/50"
+            : "border-white/10"
       }`}
       onClick={() => setIsContentVisible(!isContentVisible)}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="flex items-center">
-            <Rabbit size={16} />
-            <span className="bg-blue-500 text-white text-xs px-1.5 py-0.5 rounded ml-1 font-medium">
+            <Rabbit size={14} className="text-white/60" />
+            <span className="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.5 rounded ml-1 font-medium border border-blue-500/30">
               Turbo Edit
             </span>
           </div>
           {fileName && (
-            <span className="text-gray-700 dark:text-gray-300 font-medium text-sm">
+            <span className="text-white/90 font-medium text-xs">
               {fileName}
             </span>
           )}
           {inProgress && (
-            <div className="flex items-center text-amber-600 text-xs">
-              <Loader size={14} className="mr-1 animate-spin" />
+            <div className="flex items-center text-amber-400 text-[10px]">
+              <Loader size={10} className="mr-1 animate-spin" />
               <span>Editing...</span>
             </div>
           )}
           {aborted && (
-            <div className="flex items-center text-red-600 text-xs">
-              <CircleX size={14} className="mr-1" />
+            <div className="flex items-center text-red-400 text-[10px]">
+              <CircleX size={10} className="mr-1" />
               <span>Did not finish</span>
             </div>
           )}
@@ -76,24 +76,24 @@ export const DyadEdit: React.FC<DyadEditProps> = ({
         <div className="flex items-center">
           {isContentVisible ? (
             <ChevronsDownUp
-              size={20}
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              size={14}
+              className="text-white/40 hover:text-white/60"
             />
           ) : (
             <ChevronsUpDown
-              size={20}
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              size={14}
+              className="text-white/40 hover:text-white/60"
             />
           )}
         </div>
       </div>
       {path && (
-        <div className="text-xs text-gray-500 dark:text-gray-400 font-medium mb-1">
+        <div className="text-[10px] text-white/50 font-medium mb-1">
           {path}
         </div>
       )}
       {description && (
-        <div className="text-sm text-gray-600 dark:text-gray-300">
+        <div className="text-xs text-white/70">
           <span className="font-medium">Summary: </span>
           {description}
         </div>

@@ -43,8 +43,8 @@ export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
 
   return (
     <div
-      className={`relative bg-(--background-lightest) dark:bg-zinc-900 hover:bg-(--background-lighter) rounded-lg px-4 py-2 border my-2 cursor-pointer ${
-        inProgress ? "border-purple-500" : "border-border"
+      className={`relative bg-white/5 backdrop-blur-md hover:bg-white/10 rounded-lg px-3 py-2 border my-2 cursor-pointer transition-all ${
+        inProgress ? "border-purple-500/50" : "border-white/10"
       }`}
       onClick={() => setIsExpanded(!isExpanded)}
       role="button"
@@ -59,19 +59,19 @@ export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
     >
       {/* Top-left label badge */}
       <div
-        className="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold text-purple-500 bg-white dark:bg-zinc-900"
+        className="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold text-purple-400 bg-purple-500/10 backdrop-blur-sm border border-purple-500/20"
         style={{ zIndex: 1 }}
       >
-        <Brain size={16} className="text-purple-500" />
+        <Brain size={12} className="text-purple-400" />
         <span>Thinking</span>
         {inProgress && (
-          <Loader size={14} className="ml-1 text-purple-500 animate-spin" />
+          <Loader size={10} className="ml-1 text-purple-400 animate-spin" />
         )}
       </div>
 
       {/* Indicator icon */}
-      <div className="absolute top-2 right-2 p-1 text-gray-500">
-        {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+      <div className="absolute top-2 right-2 p-1 text-white/40">
+        {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
       </div>
 
       {/* Main content with smooth transition */}
@@ -83,7 +83,7 @@ export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
           marginBottom: isExpanded ? "0" : "-6px", // Compensate for padding
         }}
       >
-        <div className="px-0 text-sm text-gray-600 dark:text-gray-300">
+        <div className="px-0 text-xs text-white/70">
           {typeof children === "string" ? (
             <VanillaMarkdownParser content={children} />
           ) : (

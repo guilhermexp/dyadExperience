@@ -68,13 +68,13 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
       <div
         onClick={handleCardClick}
         className={`
-          bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden 
-          transform transition-all duration-300 ease-in-out 
+          bg-white/5 backdrop-blur-md rounded-lg border overflow-hidden
+          transform transition-all duration-200 ease-in-out
           cursor-pointer group relative
           ${
             isSelected
-              ? "ring-2 ring-blue-500 dark:ring-blue-400 shadow-xl"
-              : "hover:shadow-lg hover:-translate-y-1"
+              ? "border-white/30 shadow-xl scale-[1.02]"
+              : "border-white/15 hover:border-white/25 hover:shadow-lg hover:scale-[1.01]"
           }
         `}
       >
@@ -82,58 +82,58 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
           <img
             src={template.imageUrl}
             alt={template.title}
-            className={`w-full h-52 object-cover transition-opacity duration-300 group-hover:opacity-80 ${
-              isSelected ? "opacity-75" : ""
+            className={`w-full h-32 object-cover transition-opacity duration-300 group-hover:opacity-90 ${
+              isSelected ? "opacity-90" : "opacity-80"
             }`}
           />
           {isSelected && (
-            <span className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg">
+            <span className="absolute top-2 right-2 bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-medium px-2 py-1 rounded-md shadow-lg">
               Selected
             </span>
           )}
         </div>
-        <div className="p-4">
-          <div className="flex justify-between items-center mb-1.5">
+        <div className="p-2.5">
+          <div className="flex justify-between items-center mb-0.5">
             <h2
-              className={`text-lg font-semibold ${
+              className={`text-xs font-medium ${
                 isSelected
-                  ? "text-blue-600 dark:text-blue-400"
-                  : "text-gray-900 dark:text-white"
+                  ? "text-white"
+                  : "text-white/90"
               }`}
             >
               {template.title}
             </h2>
             {template.isOfficial && !template.isExperimental && (
               <span
-                className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${
                   isSelected
-                    ? "bg-blue-100 text-blue-700 dark:bg-blue-600 dark:text-blue-100"
-                    : "bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-200"
+                    ? "bg-white/20 text-white border border-white/30"
+                    : "bg-green-500/20 text-green-400 border border-green-500/30"
                 }`}
               >
                 Official
               </span>
             )}
             {template.isExperimental && (
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200">
+              <span className="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
                 Experimental
               </span>
             )}
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 h-10 overflow-y-auto">
+          <p className="text-[10px] text-white/50 mb-2 h-6 overflow-hidden line-clamp-2 leading-3">
             {template.description}
           </p>
           {template.githubUrl && (
             <a
-              className={`inline-flex items-center text-sm font-medium transition-colors duration-200 ${
+              className={`inline-flex items-center text-[10px] font-medium transition-colors duration-200 ${
                 isSelected
-                  ? "text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200"
-                  : "text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                  ? "text-white/90 hover:text-white"
+                  : "text-white/70 hover:text-white/90"
               }`}
               onClick={handleGithubClick}
             >
               View on GitHub{" "}
-              <ArrowLeft className="w-4 h-4 ml-1 transform rotate-180" />
+              <ArrowLeft className="w-3 h-3 ml-0.5 transform rotate-180" />
             </a>
           )}
 
@@ -144,7 +144,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
             }}
             size="sm"
             className={cn(
-              "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold mt-2",
+              "w-full h-7 bg-white/10 hover:bg-white/15 border border-white/20 text-white text-[10px] font-medium mt-1.5 transition-all",
               settings?.selectedTemplateId !== template.id && "invisible",
             )}
           >

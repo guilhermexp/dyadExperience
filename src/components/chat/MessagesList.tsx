@@ -82,6 +82,7 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
                   variant="outline"
                   size="sm"
                   disabled={isUndoLoading}
+                  className="h-7 text-xs bg-white/5 border-white/15 hover:bg-white/10 text-white/90"
                   onClick={async () => {
                     if (!selectedChatId || !appId) {
                       console.error("No chat selected or app ID not available");
@@ -139,9 +140,9 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
                   }}
                 >
                   {isUndoLoading ? (
-                    <Loader2 size={16} className="mr-1 animate-spin" />
+                    <Loader2 size={12} className="mr-1 animate-spin" />
                   ) : (
-                    <Undo size={16} />
+                    <Undo size={12} className="mr-1" />
                   )}
                   Undo
                 </Button>
@@ -151,6 +152,7 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
                 variant="outline"
                 size="sm"
                 disabled={isRetryLoading}
+                className="h-7 text-xs bg-white/5 border-white/15 hover:bg-white/10 text-white/90"
                 onClick={async () => {
                   if (!selectedChatId) {
                     console.error("No chat selected");
@@ -225,9 +227,9 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
                 }}
               >
                 {isRetryLoading ? (
-                  <Loader2 size={16} className="mr-1 animate-spin" />
+                  <Loader2 size={12} className="mr-1 animate-spin" />
                 ) : (
-                  <RefreshCw size={16} />
+                  <RefreshCw size={12} className="mr-1" />
                 )}
                 Retry
               </Button>

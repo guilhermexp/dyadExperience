@@ -78,17 +78,17 @@ export function ProModeSelector() {
         </TooltipTrigger>
         <TooltipContent>Configure Dyad Pro settings</TooltipContent>
       </Tooltip>
-      <PopoverContent className="w-80 border-border">
-        <div className="space-y-4">
+      <PopoverContent className="w-64 p-3">
+        <div className="space-y-3">
           <div className="space-y-1">
-            <h4 className="font-medium flex items-center gap-1.5">
-              <Sparkles className="h-4 w-4 text-muted-foreground" />
-              <span className="text-foreground font-medium">Dyad Pro</span>
+            <h4 className="text-xs font-medium flex items-center gap-1">
+              <Sparkles className="h-3.5 w-3.5 text-white/70" />
+              <span className="text-white">Dyad Pro</span>
             </h4>
-            <div className="h-px bg-border" />
+            <div className="h-px bg-white/10" />
           </div>
           {/* Unlock Pro modes button removed for self-hosting */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3">
             <SelectorRow
               id="pro-enabled"
               label="Enable Dyad Pro"
@@ -146,11 +146,11 @@ function SelectorRow({
   toggle: () => void;
 }) {
   return (
-    <div className="flex items-center justify-between">
-      <div className="space-y-1.5">
+    <div className="flex items-center justify-between gap-2">
+      <div className="space-y-0.5 flex-1">
         <Label
           htmlFor={id}
-          className={!isTogglable ? "text-muted-foreground/50" : ""}
+          className={`text-xs ${!isTogglable ? "text-white/30" : "text-white/90"}`}
         >
           {label}
         </Label>
@@ -158,15 +158,15 @@ function SelectorRow({
           <Tooltip>
             <TooltipTrigger asChild>
               <Info
-                className={`h-4 w-4 cursor-help ${!isTogglable ? "text-muted-foreground/50" : "text-muted-foreground"}`}
+                className={`h-3 w-3 cursor-help ${!isTogglable ? "text-white/30" : "text-white/50"}`}
               />
             </TooltipTrigger>
-            <TooltipContent side="right" className="max-w-72">
+            <TooltipContent side="right" className="max-w-60">
               {tooltip}
             </TooltipContent>
           </Tooltip>
           <p
-            className={`text-xs ${!isTogglable ? "text-muted-foreground/50" : "text-muted-foreground"} max-w-55`}
+            className={`text-[10px] ${!isTogglable ? "text-white/30" : "text-white/50"} max-w-44`}
           >
             {description}
           </p>
@@ -210,36 +210,36 @@ function SmartContextSelector({
   const currentValue = getCurrentValue();
 
   return (
-    <div className="space-y-3">
-      <div className="space-y-1.5">
-        <Label className={!isTogglable ? "text-muted-foreground/50" : ""}>
+    <div className="space-y-2">
+      <div className="space-y-0.5">
+        <Label className={`text-xs ${!isTogglable ? "text-white/30" : "text-white/90"}`}>
           Smart Context
         </Label>
         <div className="flex items-center gap-1">
           <Tooltip>
             <TooltipTrigger asChild>
               <Info
-                className={`h-4 w-4 cursor-help ${!isTogglable ? "text-muted-foreground/50" : "text-muted-foreground"}`}
+                className={`h-3 w-3 cursor-help ${!isTogglable ? "text-white/30" : "text-white/50"}`}
               />
             </TooltipTrigger>
-            <TooltipContent side="right" className="max-w-72">
+            <TooltipContent side="right" className="max-w-60">
               Improve efficiency and save credits working on large codebases.
             </TooltipContent>
           </Tooltip>
           <p
-            className={`text-xs ${!isTogglable ? "text-muted-foreground/50" : "text-muted-foreground"}`}
+            className={`text-[10px] ${!isTogglable ? "text-white/30" : "text-white/50"}`}
           >
             Optimizes your AI's code context
           </p>
         </div>
       </div>
-      <div className="inline-flex rounded-md border border-input">
+      <div className="inline-flex rounded-md border border-white/15">
         <Button
           variant={currentValue === "off" ? "default" : "ghost"}
           size="sm"
           onClick={() => onValueChange("off")}
           disabled={!isTogglable}
-          className="rounded-r-none border-r border-input h-8 px-3 text-xs flex-shrink-0"
+          className="rounded-r-none border-r border-white/15 h-6 px-2 text-[10px] flex-shrink-0 bg-transparent hover:bg-white/10"
         >
           Off
         </Button>
@@ -248,7 +248,7 @@ function SmartContextSelector({
           size="sm"
           onClick={() => onValueChange("conservative")}
           disabled={!isTogglable}
-          className="rounded-none border-r border-input h-8 px-3 text-xs flex-shrink-0"
+          className="rounded-none border-r border-white/15 h-6 px-2 text-[10px] flex-shrink-0 bg-transparent hover:bg-white/10"
         >
           Conservative
         </Button>
@@ -257,7 +257,7 @@ function SmartContextSelector({
           size="sm"
           onClick={() => onValueChange("balanced")}
           disabled={!isTogglable}
-          className="rounded-l-none h-8 px-3 text-xs flex-shrink-0"
+          className="rounded-l-none h-6 px-2 text-[10px] flex-shrink-0 bg-transparent hover:bg-white/10"
         >
           Balanced
         </Button>

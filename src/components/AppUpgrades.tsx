@@ -59,19 +59,19 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
 
   if (isLoading) {
     return (
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+      <div className="mt-4">
+        <h3 className="text-sm font-semibold mb-2 text-white">
           App Upgrades
         </h3>
-        <Loader2 className="h-6 w-6 animate-spin" />
+        <Loader2 className="h-4 w-4 animate-spin text-white/60" />
       </div>
     );
   }
 
   if (queryError) {
     return (
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+      <div className="mt-4">
+        <h3 className="text-sm font-semibold mb-2 text-white">
           App Upgrades
         </h3>
         <Alert variant="destructive">
@@ -85,14 +85,14 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
   const currentUpgrades = upgrades?.filter((u) => u.isNeeded) ?? [];
 
   return (
-    <div className="mt-6">
-      <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+    <div className="mt-4">
+      <h3 className="text-sm font-semibold mb-2 text-white">
         App Upgrades
       </h3>
       {currentUpgrades.length === 0 ? (
         <div
           data-testid="no-app-upgrades-needed"
-          className="p-4 bg-green-50 border border-green-200 dark:bg-green-900/20 dark:border-green-800/50 rounded-lg text-sm text-green-800 dark:text-green-300"
+          className="p-3 bg-green-500/10 border border-green-500/20 backdrop-blur-sm rounded-lg text-xs text-green-400"
         >
           App is up-to-date and has all Dyad capabilities enabled
         </div>
@@ -101,25 +101,25 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
           {currentUpgrades.map((upgrade: AppUpgrade) => (
             <div
               key={upgrade.id}
-              className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg flex justify-between items-start"
+              className="p-3 border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg flex justify-between items-start"
             >
               <div className="flex-grow">
-                <h4 className="font-semibold text-gray-800 dark:text-gray-200">
+                <h4 className="font-semibold text-white text-xs">
                   {upgrade.title}
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                <p className="text-[10px] text-white/60 mt-1">
                   {upgrade.description}
                 </p>
                 {mutationError && upgradingVariables === upgrade.id && (
                   <Alert
                     variant="destructive"
-                    className="mt-3 dark:bg-destructive/15"
+                    className="mt-2"
                   >
-                    <Terminal className="h-4 w-4" />
-                    <AlertTitle className="dark:text-red-200">
+                    <Terminal className="h-3 w-3" />
+                    <AlertTitle className="text-red-400 text-xs">
                       Upgrade Failed
                     </AlertTitle>
-                    <AlertDescription className="text-xs text-red-400 dark:text-red-300">
+                    <AlertDescription className="text-[10px] text-red-400">
                       {(mutationError as Error).message}{" "}
                       <a
                         onClick={(e) => {
@@ -128,7 +128,7 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
                             upgrade.manualUpgradeUrl ?? "https://dyad.sh/docs",
                           );
                         }}
-                        className="underline font-medium hover:dark:text-red-200"
+                        className="underline font-medium hover:text-red-300"
                       >
                         Manual Upgrade Instructions
                       </a>
@@ -139,12 +139,12 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
               <Button
                 onClick={() => handleUpgrade(upgrade.id)}
                 disabled={isUpgrading && upgradingVariables === upgrade.id}
-                className="ml-4 flex-shrink-0"
+                className="ml-3 flex-shrink-0 h-7 text-xs bg-white/10 border-white/15 hover:bg-white/20 text-white"
                 size="sm"
                 data-testid={`app-upgrade-${upgrade.id}`}
               >
                 {isUpgrading && upgradingVariables === upgrade.id ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-1 h-3 w-3 animate-spin" />
                 ) : null}
                 Upgrade
               </Button>

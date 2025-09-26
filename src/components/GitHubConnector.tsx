@@ -665,15 +665,15 @@ function UnconnectedGitHubConnector({
       <button
         type="button"
         onClick={!isExpanded ? () => setIsExpanded(true) : undefined}
-        className={`w-full p-4 text-left transition-colors rounded-md flex items-center justify-between ${
+        className={`w-full p-3 text-left transition-colors rounded-md flex items-center justify-between ${
           !isExpanded
-            ? "cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50"
+            ? "cursor-pointer hover:bg-white/10"
             : ""
         }`}
       >
-        <span className="font-medium">Set up your GitHub repo</span>
+        <span className="font-medium text-xs text-white">Set up your GitHub repo</span>
         {isExpanded ? undefined : (
-          <ChevronRight className="h-4 w-4 text-gray-500" />
+          <ChevronRight className="h-3 w-3 text-white/50" />
         )}
       </button>
 

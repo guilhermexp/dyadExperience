@@ -60,25 +60,25 @@ export function AppList({ show }: { show?: boolean }) {
         className="overflow-y-auto h-[calc(100vh-112px)]"
         data-testid="app-list-container"
       >
-        <SidebarGroupLabel>Your Apps</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-white/70 px-4 mb-3">Your Apps</SidebarGroupLabel>
         <SidebarGroupContent>
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 px-3">
             <Button
               onClick={handleNewApp}
-              variant="outline"
-              className="flex items-center justify-start gap-2 mx-2 py-2"
+              variant="ghost"
+              className="flex items-center justify-start gap-2 h-9 px-3 hover:bg-white/10 text-white/90 hover:text-white transition-colors rounded-lg"
             >
-              <PlusCircle size={16} />
-              <span>New App</span>
+              <PlusCircle className="h-4 w-4" />
+              <span className="text-sm">New App</span>
             </Button>
             <Button
               onClick={() => setIsSearchDialogOpen(!isSearchDialogOpen)}
-              variant="outline"
-              className="flex items-center justify-start gap-2 mx-2 py-3"
+              variant="ghost"
+              className="flex items-center justify-start gap-2 h-9 px-3 hover:bg-white/10 text-white/90 hover:text-white transition-colors rounded-lg"
               data-testid="search-apps-button"
             >
-              <Search size={16} />
-              <span>Search Apps</span>
+              <Search className="h-4 w-4" />
+              <span className="text-sm">Search Apps</span>
             </Button>
 
             {loading ? (
@@ -94,31 +94,31 @@ export function AppList({ show }: { show?: boolean }) {
                 No apps found
               </div>
             ) : (
-              <SidebarMenu className="space-y-1" data-testid="app-list">
+              <div className="space-y-1 mt-3" data-testid="app-list">
                 {apps.map((app) => (
-                  <SidebarMenuItem key={app.id} className="mb-1">
+                  <div key={app.id}>
                     <Button
                       variant="ghost"
                       onClick={() => handleAppClick(app.id)}
-                      className={`justify-start w-full text-left py-3 hover:bg-sidebar-accent/80 ${
+                      className={`justify-start w-full text-left px-3 py-2 hover:bg-white/10 transition-colors rounded-lg ${
                         selectedAppId === app.id
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                          : ""
+                          ? "bg-white/10 text-white border-l-2 border-white/50"
+                          : "text-white/80 hover:text-white"
                       }`}
                       data-testid={`app-list-item-${app.name}`}
                     >
                       <div className="flex flex-col w-full">
-                        <span className="truncate">{app.name}</span>
-                        <span className="text-xs text-gray-500">
+                        <span className="truncate text-sm font-medium">{app.name}</span>
+                        <span className="text-xs text-white/50">
                           {formatDistanceToNow(new Date(app.createdAt), {
                             addSuffix: true,
                           })}
                         </span>
                       </div>
                     </Button>
-                  </SidebarMenuItem>
+                  </div>
                 ))}
-              </SidebarMenu>
+              </div>
             )}
           </div>
         </SidebarGroupContent>

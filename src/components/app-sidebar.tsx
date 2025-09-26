@@ -80,9 +80,9 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarContent className="flex flex-row h-full p-0">
-        {/* Left Column: Navigation icons */}
-        <div className="flex flex-col w-14 pt-11 items-center border-r border-white/15">
+      <SidebarContent className={`${state === "expanded" ? "flex flex-row" : ""} h-full p-0`}>
+        {/* Icons column - always visible */}
+        <div className={`${state === "expanded" ? "flex flex-col w-14 border-r border-white/15" : "w-full flex flex-col"} pt-11 items-center`}>
           <div className="mb-2">
             <SidebarTrigger />
           </div>
@@ -104,14 +104,15 @@ export function AppSidebar() {
           </div>
         </div>
 
-        {/* Right Column: Content area */}
-        <div className="flex-1 overflow-y-auto pt-11">
-          <AppList show={selectedItem === "Apps"} />
-          <ChatList show={selectedItem === "Chat"} />
-          <SettingsList show={selectedItem === "Settings"} />
-        </div>
+        {/* Right Column: Content area - only visible when expanded */}
+        {state === "expanded" && (
+          <div className="flex-1 overflow-y-auto pt-11">
+            <AppList show={selectedItem === "Apps"} />
+            <ChatList show={selectedItem === "Chat"} />
+            <SettingsList show={selectedItem === "Settings"} />
+          </div>
+        )}
       </SidebarContent>
-
 
       <SidebarRail />
     </Sidebar>

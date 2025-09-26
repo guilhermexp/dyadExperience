@@ -242,43 +242,47 @@
   }
 }
 
+/* Hide scrollbars but keep them functional */
 @media (pointer: fine) {
   @supports not (selector(::-webkit-scrollbar)) {
     * {
-      scrollbar-color: #dadce0 transparent;
+      scrollbar-color: transparent transparent;
       scrollbar-gutter: auto;
-      scrollbar-width: thin;
+      scrollbar-width: none;
     }
   }
 
   ::-webkit-scrollbar,
   ::-webkit-scrollbar-corner {
     background: transparent;
-    height: 12px;
-    width: 12px;
+    height: 0;
+    width: 0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: content-box currentColor;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    color: #dadce0;
-    min-height: 48px;
-    min-width: 48px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
   }
 
-  :hover::-webkit-scrollbar-thumb {
-    color: #80868b;
-  }
-
-  ::-webkit-scrollbar-thumb:active {
-    color: #5f6368;
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
 
   ::-webkit-scrollbar-button {
     height: 0;
     width: 0;
   }
+}
+
+/* Alternative approach for better cross-browser compatibility */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 @keyframes marquee {

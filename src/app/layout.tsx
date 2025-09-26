@@ -44,7 +44,7 @@ export default function RootLayout({
           <SidebarProvider>
             <TitleBar />
             <AppSidebar />
-            <div className="flex h-screenish w-full overflow-hidden mt-11 border-t border-l border-border rounded-tl-lg bg-background">
+            <div className="flex h-screenish w-full overflow-hidden mt-11 border-t border-l border-white/10 rounded-tl-lg bg-transparent">
               {children}
             </div>
             <Toaster richColors />
