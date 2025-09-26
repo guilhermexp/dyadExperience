@@ -248,8 +248,8 @@ export function ChatInput({ chatId }: { chatId?: number }) {
       )}
       <div className="p-3 md:p-4 lg:p-6" data-testid="chat-input-container">
         <div
-          className={`relative flex flex-col space-y-2 border border-white/15 rounded-xl bg-white/5 backdrop-blur-md shadow-lg min-h-[70px] transition-all hover:bg-white/[0.07] hover:border-white/20 ${
-            isDraggingOver ? "ring-2 ring-primary border-primary bg-white/10" : ""
+          className={`relative flex flex-col space-y-2 border border-border dark:border-white/15 rounded-xl bg-muted dark:bg-white/5 backdrop-blur-md shadow-lg min-h-[70px] transition-all hover:bg-muted/80 dark:hover:bg-white/[0.07] hover:border-border dark:hover:border-white/20 ${
+            isDraggingOver ? "ring-2 ring-primary border-primary bg-muted dark:bg-white/10" : ""
           }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
@@ -314,7 +314,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
               {isStreaming ? (
                 <button
                   onClick={handleCancel}
-                  className="p-2 hover:bg-accent/50 text-foreground rounded-lg transition-colors"
+                  className="p-2 hover:bg-muted dark:hover:bg-accent/50 text-foreground rounded-lg transition-colors"
                   title="Cancel generation"
                 >
                   <StopCircleIcon size={16} />
@@ -323,7 +323,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
                 <button
                   onClick={handleSubmit}
                   disabled={!inputValue.trim() && attachments.length === 0}
-                  className="p-2 hover:bg-accent/50 text-foreground rounded-lg disabled:opacity-50 transition-colors"
+                  className="p-2 hover:bg-muted dark:hover:bg-accent/50 text-foreground rounded-lg disabled:opacity-50 transition-colors"
                   title="Send message"
                 >
                   <SendHorizontalIcon size={16} />

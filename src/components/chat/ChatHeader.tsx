@@ -204,7 +204,7 @@ export function ChatHeader({
         <button
           data-testid="toggle-preview-panel-button"
           onClick={onTogglePreview}
-          className="cursor-pointer p-2 hover:bg-(--background-lightest) rounded-md"
+          className="cursor-pointer p-2 hover:bg-muted dark:hover:bg-(--background-lightest) rounded-md"
         >
           {isPreviewOpen ? (
             <PanelRightClose size={20} />

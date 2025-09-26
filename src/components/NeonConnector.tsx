@@ -26,10 +26,10 @@ export function NeonConnector() {
 
   if (settings?.neon?.accessToken) {
     return (
-      <div className="flex flex-col space-y-3 p-4 border border-white/15 bg-white/5 backdrop-blur-md max-w-md rounded-lg">
+      <div className="flex flex-col space-y-3 p-4 border border-border dark:border-white/15 bg-card dark:bg-white/5 backdrop-blur-md max-w-md rounded-lg">
         <div className="flex flex-col items-start justify-between">
           <div className="flex items-center justify-between w-full">
-            <h2 className="text-sm font-medium text-white pb-1">Neon Database</h2>
+            <h2 className="text-sm font-medium text-foreground dark:text-white pb-1">Neon Database</h2>
             <Button
               variant="outline"
               onClick={() => {
@@ -47,7 +47,7 @@ export function NeonConnector() {
               </div>
             </Button>
           </div>
-          <p className="text-xs text-white/50 pb-2">
+          <p className="text-xs text-muted-foreground dark:text-white/50 pb-2">
             You are connected to Neon Database
           </p>
           <NeonDisconnectButton />
@@ -57,10 +57,10 @@ export function NeonConnector() {
   }
 
   return (
-    <div className="flex flex-col space-y-3 p-4 border border-white/15 bg-white/5 backdrop-blur-md max-w-md rounded-lg">
+    <div className="flex flex-col space-y-3 p-4 border border-border dark:border-white/15 bg-card dark:bg-white/5 backdrop-blur-md max-w-md rounded-lg">
       <div className="flex flex-col items-start justify-between">
-        <h2 className="text-sm font-medium text-white pb-1">Neon Database</h2>
-        <p className="text-xs text-white/50 pb-2">
+        <h2 className="text-sm font-medium text-foreground dark:text-white pb-1">Neon Database</h2>
+        <p className="text-xs text-muted-foreground dark:text-white/50 pb-2">
           Neon Database has a good free tier with backups and up to 10 projects.
         </p>
         <div
@@ -73,7 +73,7 @@ export function NeonConnector() {
               );
             }
           }}
-          className="w-auto h-8 cursor-pointer flex items-center justify-center px-3 py-1.5 rounded-md border border-white/20 transition-all font-medium text-xs bg-white/10 hover:bg-white/15 text-white"
+          className="w-auto h-8 cursor-pointer flex items-center justify-center px-3 py-1.5 rounded-md border border-border dark:border-white/20 transition-all font-medium text-xs bg-muted dark:bg-white/10 hover:bg-muted/80 dark:hover:bg-white/15 text-foreground dark:text-white"
           data-testid="connect-neon-button"
         >
           <span className="mr-2 text-xs">Connect to</span>

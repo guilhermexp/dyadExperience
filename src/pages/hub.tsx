@@ -35,16 +35,16 @@ const HubPage: React.FC = () => {
           onClick={() => router.history.back()}
           variant="ghost"
           size="sm"
-          className="flex items-center gap-2 mb-6 text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          className="flex items-center gap-2 mb-6 text-muted-foreground dark:text-white/70 hover:text-foreground dark:hover:text-white hover:bg-muted dark:hover:bg-white/10 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           <span className="text-sm">Go Back</span>
         </Button>
         <header className="mb-10 text-left">
-          <h1 className="text-2xl font-light text-white mb-2">
+          <h1 className="text-2xl font-light text-foreground dark:text-white mb-2">
             Pick your default template
           </h1>
-          <p className="text-sm text-white/50">
+          <p className="text-sm text-muted-foreground dark:text-white/50">
             Choose a starting point for your new project.
             {isLoading && " Loading additional templates..."}
           </p>
@@ -53,7 +53,7 @@ const HubPage: React.FC = () => {
         {/* Official Templates Section */}
         {officialTemplates.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-lg font-medium text-white mb-4">
+            <h2 className="text-lg font-medium text-foreground dark:text-white mb-4">
               Official templates
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -73,7 +73,7 @@ const HubPage: React.FC = () => {
         {/* Community Templates Section */}
         {communityTemplates.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-lg font-medium text-white mb-4">
+            <h2 className="text-lg font-medium text-foreground dark:text-white mb-4">
               Community templates
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -106,10 +106,10 @@ function BackendSection() {
   return (
     <div className="">
       <header className="mb-4 text-left">
-        <h1 className="text-lg font-medium text-white mb-2">
+        <h1 className="text-lg font-medium text-foreground dark:text-white mb-2">
           Backend Services
         </h1>
-        <p className="text-sm text-white/50">
+        <p className="text-sm text-muted-foreground dark:text-white/50">
           Connect to backend services for your projects.
         </p>
       </header>

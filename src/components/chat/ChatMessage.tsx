@@ -80,7 +80,7 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
       <div className={`mt-2 w-full max-w-3xl mx-auto group`}>
         <div
           className={`rounded-lg p-2 ${
-            message.role === "assistant" ? "" : "ml-24 bg-white/5 backdrop-blur-md border border-white/10"
+            message.role === "assistant" ? "" : "ml-24 bg-muted dark:bg-white/5 backdrop-blur-md border border-border dark:border-white/10"
           }`}
         >
           {message.role === "assistant" &&
@@ -123,7 +123,7 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
             </div>
           ) : (
             <div
-              className="prose dark:prose-invert prose-headings:mb-2 prose-p:my-1 prose-pre:my-0 max-w-none break-words"
+              className="prose dark:prose-invert prose-headings:mb-2 prose-p:my-1 prose-pre:my-0 max-w-none break-words text-foreground dark:text-white"
               suppressHydrationWarning
             >
               {message.role === "assistant" ? (
@@ -163,7 +163,7 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
                         <button
                           data-testid="copy-message-button"
                           onClick={handleCopyFormatted}
-                          className="flex items-center space-x-1 px-2 py-1 text-[10px] text-white/50 hover:text-white/70 hover:bg-white/10 rounded transition-colors duration-200 cursor-pointer"
+                          className="flex items-center space-x-1 px-2 py-1 text-[10px] text-muted-foreground dark:text-white/50 hover:text-foreground dark:hover:text-white/70 hover:bg-muted dark:hover:bg-white/10 rounded transition-colors duration-200 cursor-pointer"
                         >
                           {copied ? (
                             <Check className="h-3 w-3 text-green-400" />
@@ -184,12 +184,12 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
                   {message.approvalState === "approved" ? (
                     <>
                       <CheckCircle className="h-3 w-3 text-green-400" />
-                      <span className="text-[10px] text-white/70">Approved</span>
+                      <span className="text-[10px] text-muted-foreground dark:text-white/70">Approved</span>
                     </>
                   ) : message.approvalState === "rejected" ? (
                     <>
                       <XCircle className="h-3 w-3 text-red-400" />
-                      <span className="text-[10px] text-white/70">Rejected</span>
+                      <span className="text-[10px] text-muted-foreground dark:text-white/70">Rejected</span>
                     </>
                   ) : null}
                 </div>
@@ -199,7 +199,7 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
         </div>
         {/* Timestamp and commit info for assistant messages - only visible on hover */}
         {message.role === "assistant" && message.createdAt && (
-          <div className="mt-1 flex items-center justify-start space-x-2 text-[10px] text-white/40">
+          <div className="mt-1 flex items-center justify-start space-x-2 text-[10px] text-muted-foreground dark:text-white/40">
             <div className="flex items-center space-x-1">
               <Clock className="h-2.5 w-2.5" />
               <span>{formatTimestamp(message.createdAt)}</span>
@@ -208,7 +208,7 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
               <div className="flex items-center space-x-1">
                 <GitCommit className="h-2.5 w-2.5" />
                 {messageVersion && messageVersion.message && (
-                  <span className="max-w-70 truncate font-medium text-white/40">
+                  <span className="max-w-70 truncate font-medium text-muted-foreground dark:text-white/40">
                     {
                       messageVersion.message
                         .replace(/^\[dyad\]\s*/i, "")

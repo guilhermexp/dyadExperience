@@ -68,13 +68,13 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
       <div
         onClick={handleCardClick}
         className={`
-          bg-white/5 backdrop-blur-md rounded-lg border overflow-hidden
+          bg-card dark:bg-white/5 backdrop-blur-md rounded-lg border overflow-hidden
           transform transition-all duration-200 ease-in-out
           cursor-pointer group relative
           ${
             isSelected
-              ? "border-white/30 shadow-xl scale-[1.02]"
-              : "border-white/15 hover:border-white/25 hover:shadow-lg hover:scale-[1.01]"
+              ? "border-primary dark:border-white/30 shadow-xl scale-[1.02]"
+              : "border-border dark:border-white/15 hover:border-primary/50 dark:hover:border-white/25 hover:shadow-lg hover:scale-[1.01]"
           }
         `}
       >
@@ -87,7 +87,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
             }`}
           />
           {isSelected && (
-            <span className="absolute top-2 right-2 bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-medium px-2 py-1 rounded-md shadow-lg">
+            <span className="absolute top-2 right-2 bg-primary/20 dark:bg-white/20 backdrop-blur-md border border-primary/30 dark:border-white/30 text-primary-foreground dark:text-white text-[10px] font-medium px-2 py-1 rounded-md shadow-lg">
               Selected
             </span>
           )}
@@ -97,8 +97,8 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
             <h2
               className={`text-xs font-medium ${
                 isSelected
-                  ? "text-white"
-                  : "text-white/90"
+                  ? "text-foreground dark:text-white"
+                  : "text-foreground dark:text-white/90"
               }`}
             >
               {template.title}
@@ -107,28 +107,28 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
               <span
                 className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${
                   isSelected
-                    ? "bg-white/20 text-white border border-white/30"
-                    : "bg-green-500/20 text-green-400 border border-green-500/30"
+                    ? "bg-primary/20 dark:bg-white/20 text-primary dark:text-white border border-primary/30 dark:border-white/30"
+                    : "bg-green-50 dark:bg-green-500/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-500/30"
                 }`}
               >
                 Official
               </span>
             )}
             {template.isExperimental && (
-              <span className="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+              <span className="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-yellow-50 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-500/30">
                 Experimental
               </span>
             )}
           </div>
-          <p className="text-[10px] text-white/50 mb-2 h-6 overflow-hidden line-clamp-2 leading-3">
+          <p className="text-[10px] text-muted-foreground dark:text-white/50 mb-2 h-6 overflow-hidden line-clamp-2 leading-3">
             {template.description}
           </p>
           {template.githubUrl && (
             <a
               className={`inline-flex items-center text-[10px] font-medium transition-colors duration-200 ${
                 isSelected
-                  ? "text-white/90 hover:text-white"
-                  : "text-white/70 hover:text-white/90"
+                  ? "text-foreground dark:text-white/90 hover:text-foreground dark:hover:text-white"
+                  : "text-muted-foreground dark:text-white/70 hover:text-foreground dark:hover:text-white/90"
               }`}
               onClick={handleGithubClick}
             >
@@ -144,7 +144,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = ({
             }}
             size="sm"
             className={cn(
-              "w-full h-7 bg-white/10 hover:bg-white/15 border border-white/20 text-white text-[10px] font-medium mt-1.5 transition-all",
+              "w-full h-7 bg-muted dark:bg-white/10 hover:bg-muted/80 dark:hover:bg-white/15 border border-border dark:border-white/20 text-foreground dark:text-white text-[10px] font-medium mt-1.5 transition-all",
               settings?.selectedTemplateId !== template.id && "invisible",
             )}
           >

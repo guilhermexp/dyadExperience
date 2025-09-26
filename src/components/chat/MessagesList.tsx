@@ -82,7 +82,7 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
                   variant="outline"
                   size="sm"
                   disabled={isUndoLoading}
-                  className="h-7 text-xs bg-white/5 border-white/15 hover:bg-white/10 text-white/90"
+                  className="h-7 text-xs bg-muted dark:bg-white/5 border-border dark:border-white/15 hover:bg-muted/80 dark:hover:bg-white/10 text-foreground dark:text-white/90"
                   onClick={async () => {
                     if (!selectedChatId || !appId) {
                       console.error("No chat selected or app ID not available");
