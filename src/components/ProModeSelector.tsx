@@ -69,23 +69,23 @@ export function ProModeSelector() {
             <Button
               variant="outline"
               size="sm"
-              className="has-[>svg]:px-1.5 flex items-center gap-1.5 h-8 border-primary/50 hover:bg-primary/10 font-medium shadow-sm shadow-primary/10 transition-all hover:shadow-md hover:shadow-primary/15"
+              className="has-[>svg]:px-2 flex items-center gap-1.5 h-7 border-border/50 hover:bg-muted/50 font-normal transition-all"
             >
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-primary font-medium text-xs-sm">Pro</span>
+              <Sparkles className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="text-foreground font-normal text-xs">Pro</span>
             </Button>
           </PopoverTrigger>
         </TooltipTrigger>
         <TooltipContent>Configure Dyad Pro settings</TooltipContent>
       </Tooltip>
-      <PopoverContent className="w-80 border-primary/20">
+      <PopoverContent className="w-80 border-border">
         <div className="space-y-4">
           <div className="space-y-1">
             <h4 className="font-medium flex items-center gap-1.5">
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-primary font-medium">Dyad Pro</span>
+              <Sparkles className="h-4 w-4 text-muted-foreground" />
+              <span className="text-foreground font-medium">Dyad Pro</span>
             </h4>
-            <div className="h-px bg-gradient-to-r from-primary/50 via-primary/20 to-transparent" />
+            <div className="h-px bg-border" />
           </div>
           {/* Unlock Pro modes button removed for self-hosting */}
           <div className="flex flex-col gap-5">

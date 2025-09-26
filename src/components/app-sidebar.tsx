@@ -4,6 +4,8 @@ import {
   Settings,
   Store,
   BookOpen,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useSidebar } from "@/components/ui/sidebar"; // import useSidebar hook
@@ -26,6 +28,7 @@ import {
 import { ChatList } from "./ChatList";
 import { AppList } from "./AppList";
 import { SettingsList } from "./SettingsList";
+import { useTheme } from "@/contexts/ThemeContext";
 
 // Menu items.
 const items = [
@@ -70,6 +73,7 @@ export function AppSidebar() {
   const [hoverState, setHoverState] = useState<HoverState>("no-hover");
   const expandedByHover = useRef(false);
   const [isDropdownOpen] = useAtom(dropdownOpenAtom);
+  const { isDarkMode, setTheme } = useTheme();
 
   useEffect(() => {
     if (hoverState.startsWith("start-hover") && state === "collapsed") {
@@ -143,6 +147,19 @@ export function AppSidebar() {
         </div>
       </SidebarContent>
 
+      <SidebarFooter className="p-2">
+        <button
+          onClick={() => setTheme(isDarkMode ? "light" : "dark")}
+          className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-sidebar-accent transition-colors"
+          aria-label="Toggle theme"
+        >
+          {isDarkMode ? (
+            <Sun className="h-4 w-4" />
+          ) : (
+            <Moon className="h-4 w-4" />
+          )}
+        </button>
+      </SidebarFooter>
 
       <SidebarRail />
     </Sidebar>

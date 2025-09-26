@@ -169,16 +169,9 @@ export function ModelPicker() {
             <Button
               variant="outline"
               size="sm"
-              className="flex items-center gap-2 h-8 max-w-[130px] px-1.5 text-xs-sm"
+              className="flex items-center gap-1.5 h-7 max-w-[140px] px-2.5 text-xs border-border/50 hover:bg-muted/50"
             >
-              <span className="truncate">
-                {modelDisplayName === "Auto" && (
-                  <>
-                    <span className="text-xs text-muted-foreground">
-                      Model:
-                    </span>{" "}
-                  </>
-                )}
+              <span className="truncate font-normal">
                 {modelDisplayName}
               </span>
             </Button>

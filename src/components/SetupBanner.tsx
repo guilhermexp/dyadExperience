@@ -123,9 +123,14 @@ export function SetupBanner() {
 
   if (itemsNeedAction.length === 0) {
     return (
-      <h1 className="text-center text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 tracking-tight">
-        Build your dream app
-      </h1>
+      <div className="text-center mb-8">
+        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 tracking-tight">
+          Just do it!
+        </h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+          To vibe coder for vibe coders
+        </p>
+      </div>
     );
   }
 

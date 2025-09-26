@@ -245,9 +245,9 @@ export function ChatInput({ chatId }: { chatId?: number }) {
           Error loading proposal: {proposalError}
         </div>
       )}
-      <div className="p-6" data-testid="chat-input-container">
+      <div className="p-3 md:p-4 lg:p-6" data-testid="chat-input-container">
         <div
-          className={`relative flex flex-col space-y-3 border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm shadow-lg min-h-[80px] ${
+          className={`relative flex flex-col space-y-2 border border-border/50 rounded-xl bg-card/30 backdrop-blur-sm shadow-sm min-h-[70px] ${
             isDraggingOver ? "ring-2 ring-primary border-primary" : ""
           }`}
           onDragOver={handleDragOver}
@@ -286,64 +286,69 @@ export function ChatInput({ chatId }: { chatId?: number }) {
           {/* Use the DragDropOverlay component */}
           <DragDropOverlay isDraggingOver={isDraggingOver} />
 
-          <div className="flex items-start space-x-3 p-2">
-            <LexicalChatInput
-              value={inputValue}
-              onChange={setInputValue}
-              onSubmit={handleSubmit}
-              onPaste={handlePaste}
-              placeholder="Ask Dyad to build..."
-              excludeCurrentApp={true}
-            />
+          <div className="flex items-start gap-2 p-2">
+            <div className="flex-1 min-w-0">
+              <LexicalChatInput
+                value={inputValue}
+                onChange={setInputValue}
+                onSubmit={handleSubmit}
+                onPaste={handlePaste}
+                placeholder="Ask Dyad to build..."
+                excludeCurrentApp={true}
+              />
+            </div>
 
-            {isStreaming ? (
-              <button
-                onClick={handleCancel}
-                className="px-3 py-3 mt-2 mr-2 hover:bg-accent text-foreground rounded-xl transition-colors"
-                title="Cancel generation"
-              >
-                <StopCircleIcon size={20} />
-              </button>
-            ) : (
-              <button
-                onClick={handleSubmit}
-                disabled={!inputValue.trim() && attachments.length === 0}
-                className="px-3 py-3 mt-2 mr-2 hover:bg-accent text-foreground rounded-xl disabled:opacity-50 transition-colors"
-                title="Send message"
-              >
-                <SendHorizontalIcon size={20} />
-              </button>
-            )}
-          </div>
-          <div className="px-3 pb-3 flex items-center justify-between">
-            <div className="flex items-center">
-              <ChatInputControls showContextFilesPicker={true} />
-              {/* File attachment dropdown */}
+            <div className="flex items-center gap-1 mt-1.5 flex-shrink-0">
+              {/* File attachment dropdown moved here */}
               <FileAttachmentDropdown
                 onFileSelect={handleFileSelect}
                 disabled={isStreaming}
               />
-            </div>
 
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    onClick={() => setShowTokenBar(!showTokenBar)}
-                    variant="ghost"
-                    className={`has-[>svg]:px-2 ${
-                      showTokenBar ? "text-purple-500 bg-purple-100" : ""
-                    }`}
-                    size="sm"
-                  >
-                    <ChartColumnIncreasing size={14} />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  {showTokenBar ? "Hide token usage" : "Show token usage"}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+              {isStreaming ? (
+                <button
+                  onClick={handleCancel}
+                  className="p-2 hover:bg-accent/50 text-foreground rounded-lg transition-colors"
+                  title="Cancel generation"
+                >
+                  <StopCircleIcon size={16} />
+                </button>
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  disabled={!inputValue.trim() && attachments.length === 0}
+                  className="p-2 hover:bg-accent/50 text-foreground rounded-lg disabled:opacity-50 transition-colors"
+                  title="Send message"
+                >
+                  <SendHorizontalIcon size={16} />
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="px-2 pb-2 flex items-center gap-2">
+            <ChatInputControls showContextFilesPicker={true} />
+
+            <div className="ml-auto">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={() => setShowTokenBar(!showTokenBar)}
+                      variant="ghost"
+                      className={`has-[>svg]:px-1.5 h-7 ${
+                        showTokenBar ? "bg-muted/50" : ""
+                      }`}
+                      size="sm"
+                    >
+                      <ChartColumnIncreasing size={12} />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    {showTokenBar ? "Hide token usage" : "Show token usage"}
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
           {/* TokenBar is only displayed when showTokenBar is true */}
           {showTokenBar && <TokenBar chatId={chatId} />}

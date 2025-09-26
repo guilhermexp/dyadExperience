@@ -62,9 +62,9 @@ export function FileAttachmentDropdown({
                   size="sm"
                   disabled={disabled}
                   title="Attach files"
-                  className={className}
+                  className={`${className} h-7 px-1.5`}
                 >
-                  <Paperclip size={20} />
+                  <Paperclip size={14} />
                 </Button>
               </TooltipTrigger>
             </DropdownMenuTrigger>

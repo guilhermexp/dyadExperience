@@ -41,7 +41,7 @@ export type PreviewMode =
   | "publish";
 
 const BUTTON_CLASS_NAME =
-  "no-app-region-drag cursor-pointer relative flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium z-10 hover:bg-white/10 transition-all duration-200";
+  "no-app-region-drag cursor-pointer relative flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-normal z-10 hover:bg-white/5 transition-all duration-200";
 
 // Preview Header component with preview mode toggle
 export const PreviewHeader = () => {
@@ -201,10 +201,10 @@ export const PreviewHeader = () => {
 
   return (
     <TooltipProvider>
-      <div className="flex items-center justify-between px-3 py-3 border-b border-border/30 bg-card/30 backdrop-blur-sm">
-        <div className="relative flex rounded-xl p-1 gap-1 bg-black/10 dark:bg-white/5">
+      <div className="flex items-center justify-between px-2 py-2 border-b border-border/30 bg-card/20 backdrop-blur-sm">
+        <div className="relative flex rounded-lg p-0.5 gap-0.5 bg-black/5 dark:bg-white/5">
           <motion.div
-            className="absolute top-1 bottom-1 bg-white/20 dark:bg-white/10 shadow-lg rounded-lg backdrop-blur-sm"
+            className="absolute top-0.5 bottom-0.5 bg-white/15 dark:bg-white/10 shadow-sm rounded-md backdrop-blur-sm"
             animate={{
               left: indicatorStyle.left,
               width: indicatorStyle.width,
@@ -262,10 +262,10 @@ export const PreviewHeader = () => {
             <DropdownMenuTrigger asChild>
               <button
                 data-testid="preview-more-options-button"
-                className="no-app-region-drag flex items-center justify-center p-2 rounded-lg text-sm hover:bg-white/10 transition-all duration-200"
+                className="no-app-region-drag flex items-center justify-center p-1.5 rounded-md text-sm hover:bg-white/5 transition-all duration-200"
                 title="More options"
               >
-                <MoreVertical size={16} />
+                <MoreVertical size={14} />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-60 bg-card/80 backdrop-blur-sm border-border/50">
