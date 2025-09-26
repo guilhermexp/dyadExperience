@@ -38,7 +38,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const segments = path.split("/").filter(Boolean);
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 text-sm text-muted-foreground border-b border-border">
+    <div className="flex items-center justify-between px-4 py-2 text-sm text-muted-foreground border-b border-white/15 bg-white/5 backdrop-blur-md">
       <div className="flex items-center gap-1 overflow-hidden">
         <div className="flex items-center gap-1 overflow-hidden min-w-0">
           {segments.map((segment, index) => (

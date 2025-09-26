@@ -31,7 +31,7 @@ const ConsoleHeader = ({
 }: ConsoleHeaderProps) => (
   <div
     onClick={onToggle}
-    className="flex items-start gap-3 px-4 py-3 border-t border-border/30 cursor-pointer hover:bg-white/5 transition-all duration-200 bg-card/20 backdrop-blur-sm"
+    className="flex items-start gap-3 px-4 py-3 border-t border-white/15 cursor-pointer hover:bg-white/[0.07] transition-all duration-200 bg-white/5 backdrop-blur-md"
   >
     <Logs size={16} className="mt-0.5 opacity-80" />
     <div className="flex flex-col">

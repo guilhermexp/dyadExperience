@@ -201,7 +201,7 @@ export const PreviewHeader = () => {
 
   return (
     <TooltipProvider>
-      <div className="flex items-center justify-between px-2 py-2 border-b border-border/30 bg-card/20 backdrop-blur-sm">
+      <div className="flex items-center justify-between px-2 py-2">
         <div className="relative flex rounded-lg p-0.5 gap-0.5 bg-black/5 dark:bg-white/5">
           <motion.div
             className="absolute top-0.5 bottom-0.5 bg-white/15 dark:bg-white/10 shadow-sm rounded-md backdrop-blur-sm"

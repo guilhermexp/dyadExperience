@@ -165,7 +165,7 @@ function Sidebar({
       <div
         data-slot="sidebar"
         className={cn(
-          "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
+          "bg-white/5 backdrop-blur-md border-r border-white/15 text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
           className,
         )}
         {...props}
@@ -214,7 +214,7 @@ function Sidebar({
         <div
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
-          className="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+          className="bg-white/5 backdrop-blur-md border-r border-white/15 group-data-[variant=floating]:border-white/20 flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-lg"
         >
           {children}
         </div>
@@ -237,15 +237,14 @@ function SidebarTrigger({
           data-slot="sidebar-trigger"
           variant="ghost"
           size="sidebar"
-          className="cursor-pointer ml-1 hover:bg-sidebar"
-          // className={cn("hidden", className)}
+          className="cursor-pointer hover:bg-white/10 w-11 h-11 p-0 flex items-center justify-center rounded-lg transition-colors"
           onClick={(event) => {
             onClick?.(event);
             toggleSidebar();
           }}
           {...props}
         >
-          <Menu className="size-5" />
+          <Menu className="h-4 w-4" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </TooltipTrigger>

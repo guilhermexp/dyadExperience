@@ -9,9 +9,6 @@ import {
 } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useSidebar } from "@/components/ui/sidebar"; // import useSidebar hook
-import { useEffect, useState, useRef } from "react";
-import { useAtom } from "jotai";
-import { dropdownOpenAtom } from "@/atoms/uiAtoms";
 
 import {
   Sidebar,
@@ -59,38 +56,9 @@ const items = [
   },
 ];
 
-// Hover state types
-type HoverState =
-  | "start-hover:app"
-  | "start-hover:chat"
-  | "start-hover:settings"
-  | "start-hover:library"
-  | "clear-hover"
-  | "no-hover";
-
 export function AppSidebar() {
-  const { state, toggleSidebar } = useSidebar(); // retrieve current sidebar state
-  const [hoverState, setHoverState] = useState<HoverState>("no-hover");
-  const expandedByHover = useRef(false);
-  const [isDropdownOpen] = useAtom(dropdownOpenAtom);
+  const { state } = useSidebar(); // retrieve current sidebar state
   const { isDarkMode, setTheme } = useTheme();
-
-  useEffect(() => {
-    if (hoverState.startsWith("start-hover") && state === "collapsed") {
-      expandedByHover.current = true;
-      toggleSidebar();
-    }
-    if (
-      hoverState === "clear-hover" &&
-      state === "expanded" &&
-      expandedByHover.current &&
-      !isDropdownOpen
-    ) {
-      toggleSidebar();
-      expandedByHover.current = false;
-      setHoverState("no-hover");
-    }
-  }, [hoverState, toggleSidebar, state, setHoverState, isDropdownOpen]);
 
   const routerState = useRouterState();
   const isAppRoute =
@@ -100,15 +68,7 @@ export function AppSidebar() {
   const isSettingsRoute = routerState.location.pathname.startsWith("/settings");
 
   let selectedItem: string | null = null;
-  if (hoverState === "start-hover:app") {
-    selectedItem = "Apps";
-  } else if (hoverState === "start-hover:chat") {
-    selectedItem = "Chat";
-  } else if (hoverState === "start-hover:settings") {
-    selectedItem = "Settings";
-  } else if (hoverState === "start-hover:library") {
-    selectedItem = "Library";
-  } else if (state === "expanded") {
+  if (state === "expanded") {
     if (isAppRoute) {
       selectedItem = "Apps";
     } else if (isChatRoute) {
@@ -119,108 +79,71 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar
-      collapsible="icon"
-      onMouseLeave={() => {
-        if (!isDropdownOpen) {
-          setHoverState("clear-hover");
-        }
-      }}
-    >
-      <SidebarContent className="">
-        <div className="flex mt-8">
-          {/* Left Column: Menu items */}
-          <div className="">
-            <SidebarTrigger
-              onMouseEnter={() => {
-                setHoverState("clear-hover");
-              }}
-            />
-            <AppIcons onHoverChange={setHoverState} />
+    <Sidebar collapsible="icon">
+      <SidebarContent className="flex flex-row h-full p-0">
+        {/* Left Column: Navigation icons */}
+        <div className="flex flex-col w-14 pt-11 items-center border-r border-white/15">
+          <div className="mb-2">
+            <SidebarTrigger />
           </div>
-          {/* Right Column: Chat List Section */}
-          <div className="w-[240px]">
-            <AppList show={selectedItem === "Apps"} />
-            <ChatList show={selectedItem === "Chat"} />
-            <SettingsList show={selectedItem === "Settings"} />
+          <AppIcons />
+
+          {/* Theme toggle at bottom of icons column */}
+          <div className="mt-auto mb-4">
+            <button
+              onClick={() => setTheme(isDarkMode ? "light" : "dark")}
+              className="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDarkMode ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
+            </button>
           </div>
+        </div>
+
+        {/* Right Column: Content area */}
+        <div className="flex-1 overflow-y-auto pt-11">
+          <AppList show={selectedItem === "Apps"} />
+          <ChatList show={selectedItem === "Chat"} />
+          <SettingsList show={selectedItem === "Settings"} />
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="p-2">
-        <button
-          onClick={() => setTheme(isDarkMode ? "light" : "dark")}
-          className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-sidebar-accent transition-colors"
-          aria-label="Toggle theme"
-        >
-          {isDarkMode ? (
-            <Sun className="h-4 w-4" />
-          ) : (
-            <Moon className="h-4 w-4" />
-          )}
-        </button>
-      </SidebarFooter>
 
       <SidebarRail />
     </Sidebar>
   );
 }
 
-function AppIcons({
-  onHoverChange,
-}: {
-  onHoverChange: (state: HoverState) => void;
-}) {
+function AppIcons() {
   const routerState = useRouterState();
   const pathname = routerState.location.pathname;
 
   return (
-    // When collapsed: only show the main menu
-    <SidebarGroup className="pr-0">
-      {/* <SidebarGroupLabel>Dyad</SidebarGroupLabel> */}
+    <div className="flex flex-col items-center gap-1 mt-4">
+      {items.map((item) => {
+        const isActive =
+          (item.to === "/" && pathname === "/") ||
+          (item.to !== "/" && pathname.startsWith(item.to));
 
-      <SidebarGroupContent>
-        <SidebarMenu>
-          {items.map((item) => {
-            const isActive =
-              (item.to === "/" && pathname === "/") ||
-              (item.to !== "/" && pathname.startsWith(item.to));
-
-            return (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton
-                  asChild
-                  size="sm"
-                  className="font-medium w-12"
-                >
-                  <Link
-                    to={item.to}
-                    className={`flex flex-col items-center justify-center gap-1 h-12 mb-2 rounded-lg ${
-                      isActive ? "bg-sidebar-accent" : ""
-                    }`}
-                    onMouseEnter={() => {
-                      if (item.title === "Apps") {
-                        onHoverChange("start-hover:app");
-                      } else if (item.title === "Chat") {
-                        onHoverChange("start-hover:chat");
-                      } else if (item.title === "Settings") {
-                        onHoverChange("start-hover:settings");
-                      } else if (item.title === "Library") {
-                        onHoverChange("start-hover:library");
-                      }
-                    }}
-                  >
-                    <div className="flex flex-col items-center gap-1">
-                      <item.icon className="h-4 w-4" />
-                      <span className={"text-[10px]"}>{item.title}</span>
-                    </div>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            );
-          })}
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarGroup>
+        return (
+          <Link
+            key={item.title}
+            to={item.to}
+            className={`flex flex-col items-center justify-center gap-0.5 w-11 h-11 rounded-lg transition-colors ${
+              isActive
+                ? "bg-white/10 text-white"
+                : "hover:bg-white/10 text-white/70 hover:text-white"
+            }`}
+          >
+            <item.icon className="h-4 w-4" />
+            <span className="text-[10px] mt-0.5">{item.title}</span>
+          </Link>
+        );
+      })}
+    </div>
   );
 }

@@ -135,7 +135,7 @@ const ProblemsSummary = ({ problemReport, appId }: ProblemsSummaryProps) => {
   }
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 bg-card/20 backdrop-blur-sm border-b border-border/30">
+    <div className="flex items-center justify-between px-4 py-3 bg-white/5 backdrop-blur-md border-b border-white/15">
       <div className="flex items-center gap-4">
         {totalErrors > 0 && (
           <div className="flex items-center gap-2">
