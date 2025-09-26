@@ -667,13 +667,13 @@ function UnconnectedGitHubConnector({
         onClick={!isExpanded ? () => setIsExpanded(true) : undefined}
         className={`w-full p-3 text-left transition-colors rounded-md flex items-center justify-between ${
           !isExpanded
-            ? "cursor-pointer hover:bg-white/10"
+            ? "cursor-pointer hover:bg-muted dark:hover:bg-white/10"
             : ""
         }`}
       >
-        <span className="font-medium text-xs text-white">Set up your GitHub repo</span>
+        <span className="font-medium text-xs text-foreground dark:text-white">Set up your GitHub repo</span>
         {isExpanded ? undefined : (
-          <ChevronRight className="h-3 w-3 text-white/50" />
+          <ChevronRight className="h-3 w-3 text-muted-foreground dark:text-white/50" />
         )}
       </button>
 

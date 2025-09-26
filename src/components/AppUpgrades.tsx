@@ -60,10 +60,10 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
   if (isLoading) {
     return (
       <div className="mt-4">
-        <h3 className="text-sm font-semibold mb-2 text-white">
+        <h3 className="text-sm font-semibold mb-2 text-foreground dark:text-white">
           App Upgrades
         </h3>
-        <Loader2 className="h-4 w-4 animate-spin text-white/60" />
+        <Loader2 className="h-4 w-4 animate-spin text-muted-foreground dark:text-white/60" />
       </div>
     );
   }
@@ -71,7 +71,7 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
   if (queryError) {
     return (
       <div className="mt-4">
-        <h3 className="text-sm font-semibold mb-2 text-white">
+        <h3 className="text-sm font-semibold mb-2 text-foreground dark:text-white">
           App Upgrades
         </h3>
         <Alert variant="destructive">
@@ -86,13 +86,13 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
 
   return (
     <div className="mt-4">
-      <h3 className="text-sm font-semibold mb-2 text-white">
+      <h3 className="text-sm font-semibold mb-2 text-foreground dark:text-white">
         App Upgrades
       </h3>
       {currentUpgrades.length === 0 ? (
         <div
           data-testid="no-app-upgrades-needed"
-          className="p-3 bg-green-500/10 border border-green-500/20 backdrop-blur-sm rounded-lg text-xs text-green-400"
+          className="p-3 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 backdrop-blur-sm rounded-lg text-xs text-green-700 dark:text-green-400"
         >
           App is up-to-date and has all Dyad capabilities enabled
         </div>
@@ -101,13 +101,13 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
           {currentUpgrades.map((upgrade: AppUpgrade) => (
             <div
               key={upgrade.id}
-              className="p-3 border border-white/10 bg-white/5 backdrop-blur-sm rounded-lg flex justify-between items-start"
+              className="p-3 border border-border dark:border-white/10 bg-muted/50 dark:bg-white/5 backdrop-blur-sm rounded-lg flex justify-between items-start"
             >
               <div className="flex-grow">
-                <h4 className="font-semibold text-white text-xs">
+                <h4 className="font-semibold text-foreground dark:text-white text-xs">
                   {upgrade.title}
                 </h4>
-                <p className="text-[10px] text-white/60 mt-1">
+                <p className="text-[10px] text-muted-foreground dark:text-white/60 mt-1">
                   {upgrade.description}
                 </p>
                 {mutationError && upgradingVariables === upgrade.id && (
@@ -139,7 +139,7 @@ export function AppUpgrades({ appId }: { appId: number | null }) {
               <Button
                 onClick={() => handleUpgrade(upgrade.id)}
                 disabled={isUpgrading && upgradingVariables === upgrade.id}
-                className="ml-3 flex-shrink-0 h-7 text-xs bg-white/10 border-white/15 hover:bg-white/20 text-white"
+                className="ml-3 flex-shrink-0 h-7 text-xs bg-muted dark:bg-white/10 border-border dark:border-white/15 hover:bg-muted/80 dark:hover:bg-white/20 text-foreground dark:text-white"
                 size="sm"
                 data-testid={`app-upgrade-${upgrade.id}`}
               >

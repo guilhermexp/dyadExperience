@@ -207,7 +207,7 @@ export default function AppDetailsPage() {
           onClick={() => router.history.back()}
           variant="outline"
           size="sm"
-          className="absolute top-4 left-4 flex items-center gap-1 bg-white/5 border-white/15 hover:bg-white/10 py-2 text-xs text-white/90"
+          className="absolute top-4 left-4 flex items-center gap-1 bg-muted/50 dark:bg-white/5 border-border dark:border-white/15 hover:bg-muted dark:hover:bg-white/10 py-2 text-xs"
         >
           <ArrowLeft className="h-3 w-4" />
           Back
@@ -230,23 +230,23 @@ export default function AppDetailsPage() {
         onClick={() => router.history.back()}
         variant="outline"
         size="sm"
-        className="absolute top-4 left-4 flex items-center gap-1 bg-white/5 border-white/15 hover:bg-white/10 py-2 text-xs text-white/90"
+        className="absolute top-4 left-4 flex items-center gap-1 bg-muted/50 dark:bg-white/5 border-border dark:border-white/15 hover:bg-muted dark:hover:bg-white/10 py-2 text-xs"
       >
         <ArrowLeft className="h-3 w-4" />
         Back
       </Button>
 
-      <div className="w-full max-w-2xl mx-auto mt-10 p-4 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 shadow-xl relative">
+      <div className="w-full max-w-2xl mx-auto mt-10 p-4 bg-background dark:bg-white/5 backdrop-blur-md rounded-lg border border-border dark:border-white/10 shadow-xl relative">
         <div className="flex items-center mb-3">
-          <h2 className="text-xl font-bold text-white">{selectedApp.name}</h2>
+          <h2 className="text-xl font-bold text-foreground dark:text-white">{selectedApp.name}</h2>
           <Button
             variant="ghost"
             size="sm"
-            className="ml-1 p-0.5 h-auto hover:bg-white/10"
+            className="ml-1 p-0.5 h-auto hover:bg-muted dark:hover:bg-white/10"
             onClick={handleOpenRenameDialog}
             data-testid="app-details-rename-app-button"
           >
-            <Pencil className="h-3 w-3 text-white/60" />
+            <Pencil className="h-3 w-3 text-muted-foreground dark:text-white/60" />
           </Button>
         </div>
 
@@ -257,10 +257,10 @@ export default function AppDetailsPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-7 w-7 p-0 hover:bg-white/10"
+                className="h-7 w-7 p-0 hover:bg-muted dark:hover:bg-white/10"
                 data-testid="app-details-more-options-button"
               >
-                <MoreVertical className="h-3 w-3 text-white/60" />
+                <MoreVertical className="h-3 w-3 text-muted-foreground dark:text-white/60" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-40 p-2" align="end">
@@ -296,33 +296,33 @@ export default function AppDetailsPage() {
 
         <div className="grid grid-cols-2 gap-3 text-xs mb-4">
           <div>
-            <span className="block text-white/50 mb-0.5 text-[10px]">
+            <span className="block text-muted-foreground dark:text-white/50 mb-0.5 text-[10px]">
               Created
             </span>
-            <span className="text-white/70">{new Date().toLocaleString()}</span>
+            <span className="text-foreground dark:text-white/70">{new Date().toLocaleString()}</span>
           </div>
           <div>
-            <span className="block text-white/50 mb-0.5 text-[10px]">
+            <span className="block text-muted-foreground dark:text-white/50 mb-0.5 text-[10px]">
               Last Updated
             </span>
-            <span className="text-white/70">{new Date().toLocaleString()}</span>
+            <span className="text-foreground dark:text-white/70">{new Date().toLocaleString()}</span>
           </div>
           <div className="col-span-2">
-            <span className="block text-white/50 mb-0.5 text-[10px]">
+            <span className="block text-muted-foreground dark:text-white/50 mb-0.5 text-[10px]">
               Path
             </span>
             <div className="flex items-center gap-1">
-              <span className="text-xs break-all text-white/70">{fullAppPath}</span>
+              <span className="text-xs break-all text-foreground dark:text-white/70">{fullAppPath}</span>
               <Button
                 variant="ghost"
                 size="sm"
-                className="p-0.5 h-auto cursor-pointer hover:bg-white/10 transition-colors"
+                className="p-0.5 h-auto cursor-pointer hover:bg-muted dark:hover:bg-white/10 transition-colors"
                 onClick={() => {
                   IpcClient.getInstance().showItemInFolder(fullAppPath);
                 }}
                 title="Show in folder"
               >
-                <Folder className="h-3 w-3 text-white/60" />
+                <Folder className="h-3 w-3 text-muted-foreground dark:text-white/60" />
               </Button>
             </div>
           </div>
@@ -336,13 +336,13 @@ export default function AppDetailsPage() {
               }
               navigate({ to: "/chat" });
             }}
-            className="cursor-pointer w-full py-3 flex justify-center items-center gap-2 bg-white text-black hover:bg-white/90 text-sm font-medium"
+            className="cursor-pointer w-full py-3 flex justify-center items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium"
             size="lg"
           >
             Open in Chat
             <MessageCircle className="h-3 w-3" />
           </Button>
-          <div className="border border-white/10 bg-white/5 backdrop-blur-sm rounded-md p-3">
+          <div className="border border-border dark:border-white/10 bg-muted/50 dark:bg-white/5 backdrop-blur-sm rounded-md p-3">
             <GitHubConnector appId={appId} folderName={selectedApp.path} />
           </div>
           {appId && <SupabaseConnector appId={appId} />}

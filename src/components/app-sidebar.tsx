@@ -82,7 +82,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarContent className={`${state === "expanded" ? "flex flex-row" : ""} h-full p-0`}>
         {/* Icons column - always visible */}
-        <div className={`${state === "expanded" ? "flex flex-col w-14 border-r border-white/15" : "w-full flex flex-col"} pt-11 items-center`}>
+        <div className={`${state === "expanded" ? "flex flex-col w-14 border-r border-border dark:border-white/15" : "w-full flex flex-col"} pt-11 items-center`}>
           <div className="mb-2">
             <SidebarTrigger />
           </div>
@@ -92,7 +92,7 @@ export function AppSidebar() {
           <div className="mt-auto mb-4">
             <button
               onClick={() => setTheme(isDarkMode ? "light" : "dark")}
-              className="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+              className="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-muted dark:hover:bg-white/10 transition-colors text-muted-foreground dark:text-white/70 hover:text-foreground dark:hover:text-white"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
@@ -136,8 +136,8 @@ function AppIcons() {
             to={item.to}
             className={`flex flex-col items-center justify-center gap-0.5 w-11 h-11 rounded-lg transition-colors ${
               isActive
-                ? "bg-white/10 text-white"
-                : "hover:bg-white/10 text-white/70 hover:text-white"
+                ? "bg-muted dark:bg-white/10 text-foreground dark:text-white"
+                : "hover:bg-muted dark:hover:bg-white/10 text-muted-foreground dark:text-white/70 hover:text-foreground dark:hover:text-white"
             }`}
           >
             <item.icon className="h-4 w-4" />

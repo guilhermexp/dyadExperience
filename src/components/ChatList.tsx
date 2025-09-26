@@ -162,7 +162,7 @@ export function ChatList({ show }: { show?: boolean }) {
         className="overflow-y-auto h-[calc(100vh-112px)]"
         data-testid="chat-list-container"
       >
-        <SidebarGroupLabel className="text-white/70 px-4 mb-3">Recent Chats</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-muted-foreground dark:text-white/70 px-4 mb-3">Recent Chats</SidebarGroupLabel>
         <SidebarGroupContent>
           <div className="flex flex-col space-y-2 px-3">
             <div className="flex gap-2 justify-start mb-2">
@@ -170,7 +170,7 @@ export function ChatList({ show }: { show?: boolean }) {
                 onClick={handleNewChat}
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 hover:bg-white/10 rounded-lg transition-colors text-white/90 hover:text-white"
+                className="h-9 w-9 hover:bg-muted dark:hover:bg-white/10 rounded-lg transition-colors text-foreground dark:text-white/90 hover:text-foreground dark:hover:text-white"
                 title="New Chat"
               >
                 <PlusCircle className="h-4 w-4" />
@@ -179,7 +179,7 @@ export function ChatList({ show }: { show?: boolean }) {
                 onClick={() => setIsSearchDialogOpen(!isSearchDialogOpen)}
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 hover:bg-white/10 rounded-lg transition-colors text-white/90 hover:text-white"
+                className="h-9 w-9 hover:bg-muted dark:hover:bg-white/10 rounded-lg transition-colors text-foreground dark:text-white/90 hover:text-foreground dark:hover:text-white"
                 data-testid="search-chats-button"
                 title="Search chats"
               >
@@ -188,11 +188,11 @@ export function ChatList({ show }: { show?: boolean }) {
             </div>
 
             {loading ? (
-              <div className="py-3 px-3 text-sm text-white/50">
+              <div className="py-3 px-3 text-sm text-muted-foreground dark:text-white/50">
                 Loading chats...
               </div>
             ) : chats.length === 0 ? (
-              <div className="py-3 px-3 text-sm text-white/50">
+              <div className="py-3 px-3 text-sm text-muted-foreground dark:text-white/50">
                 No chats found
               </div>
             ) : (
@@ -208,17 +208,17 @@ export function ChatList({ show }: { show?: boolean }) {
                             appId: chat.appId,
                           })
                         }
-                        className={`justify-start flex-1 text-left px-3 py-2 hover:bg-white/10 transition-colors rounded-lg ${
+                        className={`justify-start flex-1 text-left px-3 py-2 hover:bg-muted dark:hover:bg-white/10 transition-colors rounded-lg ${
                           selectedChatId === chat.id
-                            ? "bg-white/10 text-white border-l-2 border-white/50"
-                            : "text-white/80 hover:text-white"
+                            ? "bg-muted dark:bg-white/10 text-foreground dark:text-white border-l-2 border-primary dark:border-white/50"
+                            : "text-muted-foreground dark:text-white/80 hover:text-foreground dark:hover:text-white"
                         }`}
                       >
                         <div className="flex flex-col w-full">
                           <span className="truncate text-sm font-medium">
                             {chat.title || "New Chat"}
                           </span>
-                          <span className="text-xs text-white/50">
+                          <span className="text-xs text-muted-foreground dark:text-white/50">
                             {formatDistanceToNow(new Date(chat.createdAt), {
                               addSuffix: true,
                             })}
@@ -235,7 +235,7 @@ export function ChatList({ show }: { show?: boolean }) {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="ml-1 h-8 w-8 hover:bg-white/10 text-white/70 hover:text-white"
+                              className="ml-1 h-8 w-8 hover:bg-muted dark:hover:bg-white/10 text-muted-foreground dark:text-white/70 hover:text-foreground dark:hover:text-white"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <MoreVertical className="h-4 w-4" />

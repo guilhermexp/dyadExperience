@@ -58,7 +58,7 @@ export function SettingsList({ show }: { show: boolean }) {
   return (
     <div className="flex flex-col h-full">
       <div className="flex-shrink-0 px-4 py-3">
-        <h2 className="text-base font-medium tracking-tight text-white/70">Settings</h2>
+        <h2 className="text-base font-medium tracking-tight text-muted-foreground dark:text-white/70">Settings</h2>
       </div>
       <ScrollArea className="flex-grow">
         <div className="space-y-1 px-3">
@@ -69,8 +69,8 @@ export function SettingsList({ show }: { show: boolean }) {
               className={cn(
                 "w-full text-left px-3 py-2 rounded-lg text-sm transition-colors",
                 activeSection === section.id
-                  ? "bg-white/10 text-white font-medium border-l-2 border-white/50"
-                  : "text-white/80 hover:text-white hover:bg-white/10",
+                  ? "bg-muted dark:bg-white/10 text-foreground dark:text-white font-medium border-l-2 border-primary dark:border-white/50"
+                  : "text-muted-foreground dark:text-white/80 hover:text-foreground dark:hover:text-white hover:bg-muted dark:hover:bg-white/10",
               )}
             >
               {section.label}
