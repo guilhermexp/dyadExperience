@@ -54,20 +54,20 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
 
   return (
     <div
-      className={`bg-white/5 backdrop-blur-md hover:bg-white/10 rounded-lg px-3 py-2 border my-2 cursor-pointer transition-all ${
+      className={`bg-muted dark:bg-white/5 backdrop-blur-md hover:bg-muted/80 dark:hover:bg-white/10 rounded-lg px-3 py-2 border my-2 cursor-pointer transition-all ${
         inProgress
           ? "border-amber-500/50"
           : aborted
             ? "border-red-500/50"
-            : "border-white/10"
+            : "border-border dark:border-white/10"
       }`}
       onClick={() => setIsContentVisible(!isContentVisible)}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Pencil size={14} className="text-white/60" />
+          <Pencil size={14} className="text-muted-foreground dark:text-white/60" />
           {fileName && (
-            <span className="text-white/90 font-medium text-xs">
+            <span className="text-foreground dark:text-white/90 font-medium text-xs">
               {fileName}
             </span>
           )}
@@ -94,7 +94,7 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
                       e.stopPropagation();
                       handleCancel();
                     }}
-                    className="flex items-center gap-1 text-[10px] text-white/50 hover:text-white/70 px-2 py-0.5 rounded cursor-pointer hover:bg-white/10 transition-colors"
+                    className="flex items-center gap-1 text-[10px] text-muted-foreground dark:text-white/50 hover:text-foreground dark:hover:text-white/70 px-2 py-0.5 rounded cursor-pointer hover:bg-muted dark:hover:bg-white/10 transition-colors"
                   >
                     <X size={12} />
                     Cancel
@@ -117,23 +117,23 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
           {isContentVisible ? (
             <ChevronsDownUp
               size={14}
-              className="text-white/40 hover:text-white/60"
+              className="text-muted-foreground dark:text-white/40 hover:text-foreground dark:hover:text-white/60"
             />
           ) : (
             <ChevronsUpDown
               size={14}
-              className="text-white/40 hover:text-white/60"
+              className="text-muted-foreground dark:text-white/40 hover:text-foreground dark:hover:text-white/60"
             />
           )}
         </div>
       </div>
       {path && (
-        <div className="text-[10px] text-white/50 font-medium mb-1">
+        <div className="text-[10px] text-muted-foreground dark:text-white/50 font-medium mb-1">
           {path}
         </div>
       )}
       {description && (
-        <div className="text-xs text-white/70">
+        <div className="text-xs text-muted-foreground dark:text-white/70">
           <span className="font-medium">Summary: </span>
           {description}
         </div>
@@ -144,7 +144,7 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
           onClick={(e) => e.stopPropagation()}
         >
           {isEditing ? (
-            <div className="h-96 min-h-96 border border-white/15 rounded overflow-hidden">
+            <div className="h-96 min-h-96 border border-border dark:border-white/15 rounded overflow-hidden">
               <FileEditor appId={appId ?? null} filePath={path} />
             </div>
           ) : (
